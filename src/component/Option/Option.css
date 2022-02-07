@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+.option-content {
+  display: flex;
+  row-gap: 40px;
+  margin-left: 50px;
+  border: 2px solid grey;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 30px;
+}
+
+.option-content img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.option-sub-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px;
+}
+
+.option-sub-content h3 {
+  font-family: Roboto;
+  font-size: 26px;
+  display: inline-block;
+}
+
+.option-sub-content p {
+  font-family: Neucha;
+  margin-top: 10px;
+  font-size: 20px;
+  max-width: 400px;
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .option-content {
+    padding: 30px 10px;
+    align-items: center;
+    flex-direction: column;
+  }
+  .option-sub-content p {
+    font-size: 18px;
+    max-width: 300px;
+  }
+  .option-sub-content h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .option-sub-content p {
+    font-size: 16px;
+  }
+  .option-sub-content h3 {
+    font-size: 22px;
+  }
+}
