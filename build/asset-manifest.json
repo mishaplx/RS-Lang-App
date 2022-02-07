@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/RS-Lang-App/static/css/main.073c9b0a.css",
-    "main.js": "/RS-Lang-App/static/js/main.8e029f6e.js",
+    "main.css": "/RS-Lang-App/static/css/main.ae81de1d.css",
+    "main.js": "/RS-Lang-App/static/js/main.32660092.js",
     "static/js/787.28cb0dcd.chunk.js": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js",
-    "static/media/logo.svg": "/RS-Lang-App/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/logo.svg": "/RS-Lang-App/static/media/logo.ad178c0df28bc133be34b982d62f431d.svg",
     "index.html": "/RS-Lang-App/index.html",
-    "main.073c9b0a.css.map": "/RS-Lang-App/static/css/main.073c9b0a.css.map",
-    "main.8e029f6e.js.map": "/RS-Lang-App/static/js/main.8e029f6e.js.map",
+    "main.ae81de1d.css.map": "/RS-Lang-App/static/css/main.ae81de1d.css.map",
+    "main.32660092.js.map": "/RS-Lang-App/static/js/main.32660092.js.map",
     "787.28cb0dcd.chunk.js.map": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.8e029f6e.js"
+    "static/css/main.ae81de1d.css",
+    "static/js/main.32660092.js"
   ]
 }

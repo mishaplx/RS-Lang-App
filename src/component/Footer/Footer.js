@@ -10,6 +10,8 @@ function Footer() {
       </div>
       <div className="name__dev">
         <a href="https://github.com/mishaplx">mishaplx</a>
+        <a href="https://github.com/KISLY74">KISLY74</a>
+        <a href="https://github.com/vitalysoroko95">vitalysoroko95</a>
       </div>
       <div className="item">
       &copy; 2022
