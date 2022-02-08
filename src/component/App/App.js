@@ -5,7 +5,7 @@ import Main from '../Main/Main.js'
 import Navigation from '../Navigation/Navigation.js'
 import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
-import Textboox from '../Textboox/Textboox';
+import Textbook from '../Textbook/Textbook';
 import Minigames from '../Minigames/Minigames';
 import Statistics from '../Statistics/Statistics';
 import {
@@ -21,7 +21,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Main />}/>
-        <Route path="/textboox" element={<Textboox />}/>
+        <Route path="/textbook" element={<Textbook />}/>
         <Route path="/minigames" element={<Minigames />}/>
         <Route path="/statistics" element={<Statistics />}/>
       </Routes>

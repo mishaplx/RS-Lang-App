@@ -12,7 +12,7 @@ function Navigation() {
         </li>
         <li>
         <span className="nav__icon"></span>
-        <Link to="/textboox" className="nav__name">TextBoox</Link>
+        <Link to="/textbook" className="nav__name">Textbook</Link>
         </li>
         <li>  
           <span className="nav__icon"></span>
