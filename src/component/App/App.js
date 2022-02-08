@@ -3,6 +3,7 @@ import Footer from '../Footer/Footer.js'
 import Header from '../Header/Header.js'
 import Main from '../Main/Main.js'
 import NAvigation from '../Navigation/Navigation.js'
+import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Main/>
      </div>
      <Footer/>
+     <Login/>
      <Registration />
     </div>
   );

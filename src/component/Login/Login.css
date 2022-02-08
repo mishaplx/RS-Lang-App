@@ -1,4 +1,4 @@
-.registration{
+.login{
   position: relative;
   padding: 15px;
   border: 1px solid rgb(64, 243, 198);
@@ -14,7 +14,8 @@
   transition: .5s;
   z-index: 100;
 }
-.registration.open {
+.login.open {
+  
   transition: .2s visibility linear, .2s opacity linear;
   visibility: visible;
   opacity: 1;
@@ -60,5 +61,11 @@ input:focus-visible{
   background-color:rgb(170, 241, 223);
 }
 p{
+  cursor: pointer;
+}
+.close__button{
+  position: absolute;
+  right: 10px;
+  top: 10px;
   cursor: pointer;
 }
