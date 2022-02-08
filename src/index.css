@@ -14,7 +14,16 @@ body{
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
+::-webkit-scrollbar {
+  width: 15px; /* ширина для вертикального скролла */
+  height: 8px; /* высота для горизонтального скролла */
+  background-color: #d8d8d8;
+}
 
-
+::-webkit-scrollbar-thumb {
+  background-color: rgb(110, 245, 211);
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
 
 
