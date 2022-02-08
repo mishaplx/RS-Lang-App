@@ -12,6 +12,16 @@ function Login() {
     const login = document.querySelector('.login')
     login.classList.toggle("open")
   }
+  const handleShowPass = ()=>{
+    const checbox = document.querySelector('.show__pass-input')
+    const password = document.querySelector('.password')
+    if(checbox.checked){
+      password.type = 'text'
+    }
+    else{
+      password.type = 'password'
+    }
+  }
   return (
     <div className="login" >
       <img src={closeButton} alt="close" className="close__button" onClick={handleClickClose}/>
@@ -23,7 +33,7 @@ function Login() {
        <input type="login" className="login-input" placeholder = "Login..."/>
        <input type="password" className="password" placeholder = "Password..."/>
        <div className="show__pass">
-       <input type="checkbox" className="show__pass-input"/>
+       <input type="checkbox" className="show__pass-input" onClick ={handleShowPass}/>
        <span>Show password</span>
        </div>
        
