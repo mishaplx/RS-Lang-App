@@ -12,7 +12,7 @@ body{
   font-family: Neucha;
 }
 ::-webkit-scrollbar {
-  width: 15px; /* ширина для вертикального скролла */
+  width: 10px; /* ширина для вертикального скролла */
   height: 8px; /* высота для горизонтального скролла */
   background-color: #d8d8d8;
 }
