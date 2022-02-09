@@ -62,3 +62,12 @@ margin-bottom: 10px;
   background-color: rgb(178, 250, 226);
   border-bottom: 1px solid black;
 }
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.number__page{
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #000;
+}
