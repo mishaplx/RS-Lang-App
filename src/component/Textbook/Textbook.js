@@ -1,7 +1,42 @@
+import { useState } from "react";
 import "./Textbook.css";
 import WordCard from "./WordCard/WordCard";
 import WordItem from "./WordItem/WordItem";
 function Textbook() {
+
+  // let [count, setCount] = useState(0);
+
+  // const handleClick = async () => {
+  //   const rawResponse = await fetch(`https://react-rs-language.herokuapp.com/words?page=0`);
+  //   const content = await rawResponse.json();
+
+  //     }
+     // let promise = new Promise(function(resolve, reject) {
+        // функция-исполнитель (executor)
+       // handleClick()
+        // "певец"
+      // });
+      // promise.resolve().then(data =>{
+      //   console.log(data);
+      // })
+     
+      
+  // function handleClick (event) {
+  //   let numberPage = event.target.dataset.indexNumber;
+  //   console.log(numberPage);
+  //   firstState(numberPage)
+    
+  //   };
+  //   const firstState = async (numberPage) => {
+  //     const rawResponse = await fetch(
+  //       `https://react-rs-language.herokuapp.com/words?page=${numberPage}`
+  //       );
+  //       const content = await rawResponse.json();
+  //       console.log(content);
+        
+  //       }
+        
+
   return (
     <div className="textbook">
       <h2>Учебник</h2>
@@ -56,16 +91,6 @@ function Textbook() {
           <div className="word__block">
             <div className="word__block-flex">
               <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
-              <WordItem />
             </div>
           </div>
           <div className="word__description">
@@ -73,7 +98,12 @@ function Textbook() {
           </div>
         </div>
       </div>
-      <div className="pagination">pagination</div>
+      <div className="pagination">
+        <p className="number__page" data-index-number="0" >
+          0
+        </p>
+        
+      </div>
       <div className="game">
         <h3 className="game__title">Игры</h3>
         <p className="game__subtitle">Закрепи новые слова при помощи игр.</p>
