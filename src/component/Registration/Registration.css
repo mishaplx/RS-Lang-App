@@ -1,47 +1,70 @@
-.registration{
-  position: relative;
+.registration {
   padding: 15px;
   border: 1px solid rgb(64, 243, 198);
   width: 400px;
   border-radius: 10px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
-  background-color:rgb(170, 241, 223);
+  transform: translate(-50%, -50%);
+  background-color: rgb(170, 241, 223);
   visibility: hidden;
-    opacity: 0;
-  transition: .5s;
+  opacity: 0;
+  transition: 0.5s;
   z-index: 100;
 }
 .registration.open {
-  transition: .2s visibility linear, .2s opacity linear;
+  transition: 0.2s visibility linear, 0.2s opacity linear;
   visibility: visible;
   opacity: 1;
 }
-.title{
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-form{
+form {
   display: flex;
   flex-direction: column;
 }
-form:nth-child(){
+input.uncorrect-inputReg {
+  border: 1px solid red;
+}
+p.user-register {
+  display: none;
+  cursor: default;
+  color: red;
+  font-size: 14px;
+  margin: -5px 0 0 6px;
+}
+p.uncorrect-name {
+  display: none;
+  cursor: default;
+  color: red;
+  font-size: 14px;
+  margin: -5px 0 0 6px;
+}
+p.uncorrect-pass {
+  display: none;
+  cursor: default;
+  color: red;
+  font-size: 14px;
+  margin: -5px 0 0 6px;
+}
+form:nth-child() {
   margin: 20px 0px;
 }
-input{
+input {
   height: 30px;
 }
-.show__pass-inputReg{
+.show__pass-inputReg {
   margin-right: 10px;
 }
-.show__pass{
+.show__pass {
   display: flex;
   align-items: center;
 }
-input{
+input {
   margin: 5px 0px;
   border-radius: 5px;
   padding: 5px;
@@ -49,16 +72,16 @@ input{
   border: 1px solid rgb(64, 201, 243);
   background-color: rgb(246, 251, 255);
 }
-input:focus-visible{
+input:focus-visible {
   outline: none;
   border: 3px solid rgb(64, 186, 243);
 }
 
-.submit:hover{
-  transition: .3s;
+.submit:hover {
+  transition: 0.3s;
   cursor: pointer;
-  background-color:rgb(170, 241, 223);
+  background-color: rgb(170, 241, 223);
 }
-p{
+p {
   cursor: pointer;
 }
