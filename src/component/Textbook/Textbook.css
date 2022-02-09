@@ -1,0 +1,73 @@
+
+.textbook{
+  padding: 5px 10px;
+  margin:  0 auto;
+}
+.word__level{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+.word__flex{
+  display: flex;
+  justify-content: space-between;
+}
+.word__block-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.level{
+  margin: 5px 0px;
+  width:300px;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+.a1:hover, .a2:hover{
+  background-color: rgb(110, 245, 211);
+  transition: .5s;
+}
+.b1:hover, .b2:hover{
+  background-color: rgb(110, 153, 245);
+  transition: .5s;
+}
+.c1:hover, .c2:hover{
+  background-color: rgb(245, 110, 110);
+  transition: .5s;
+}
+.pagination{
+  text-align: center;
+}
+.game__flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.game__subtitle{
+margin-bottom: 10px;
+}
+.audioCall-game, .sprint-game{
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgb(238, 238, 238);
+  min-width: 400px;
+  max-width: 500px;
+  height: 300px;
+}
+.audioCall-game:hover, .sprint-game:hover{
+  background-color: rgb(178, 250, 226);
+  border-bottom: 1px solid black;
+}
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.number__page{
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #000;
+}

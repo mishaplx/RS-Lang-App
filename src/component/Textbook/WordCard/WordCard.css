@@ -1,0 +1,14 @@
+.word__card{
+  border-radius: 20px;
+  border: 1px solid rgb(156, 156, 156);
+  padding: 30px;
+  width: 350px;
+}
+h3{
+  font-size: 25px;
+  margin: 5px 0px;
+}
+p{
+  margin: 5px 0px;
+  font-size: 20px;
+}
