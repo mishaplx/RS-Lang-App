@@ -7,6 +7,8 @@ function Header() {
     login.classList.toggle('open');
     const registration = document.querySelector('.registration')
     registration.classList.remove('open');
+    const frameLog = document.querySelector('.login-frame')
+    frameLog.style.display = 'block'
   }
 
   const handleClickLogin = (e) => {
