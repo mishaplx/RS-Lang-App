@@ -21,15 +21,26 @@ function Textbook() {
         `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
       );
       const res = await req.json()
-      let obj = res.filter(el => el.word === englishWordState)
-      setobj(obj)
-     // console.log(obj);
       setWords(res);
       setLoading(false);
     },
-    [page, groupe, englishWordState]
+    [page, groupe]
   );
+  useEffect(
+    async function(){
+      
+      const req = await fetch(
+        `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+      );
+      const res = await req.json()
+      let obj = res.filter(el => el.word === englishWordState)
+      setobj(obj)
+      setLoading(false);
+    },[englishWordState]
+
+  )
   function handleClickWordItem(event){
+    setLoading(true);
     const englishWord = event.target.parentNode.children[0].innerHTML 
     setEnglishWord(englishWord)
     
@@ -112,11 +123,12 @@ function Textbook() {
             )}
           </div>
           <div className="word__description">
-            {objState.map(el =>(
-              <WordCard el = {el}/>
-            ))}
-          
-            
+            {loading ? ("Loading..."): (
+              objState.map(el =>(
+                <WordCard el = {el}/>
+              ))
+            )}
+
           </div>
         </div>
       </div>
