@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "/RS-Lang-App/static/css/main.ae81de1d.css",
-    "main.js": "/RS-Lang-App/static/js/main.32660092.js",
+    "main.css": "/RS-Lang-App/static/css/main.ed80cb2b.css",
+    "main.js": "/RS-Lang-App/static/js/main.ac1bfe07.js",
     "static/js/787.28cb0dcd.chunk.js": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js",
+    "static/media/overview.jpg": "/RS-Lang-App/static/media/overview.47948e8d45aca3a88983.jpg",
+    "static/media/misha.jpg": "/RS-Lang-App/static/media/misha.320dee3a363fb9fe5ddc.jpg",
+    "static/media/nikita.jpg": "/RS-Lang-App/static/media/nikita.30fb355f82e5c33658f8.jpg",
+    "static/media/book.jpg": "/RS-Lang-App/static/media/book.e7e7fe423793c4368571.jpg",
+    "static/media/login.png": "/RS-Lang-App/static/media/login.bd00a6ce4f76110df38c.png",
     "static/media/logo.svg": "/RS-Lang-App/static/media/logo.ad178c0df28bc133be34b982d62f431d.svg",
     "index.html": "/RS-Lang-App/index.html",
-    "main.ae81de1d.css.map": "/RS-Lang-App/static/css/main.ae81de1d.css.map",
-    "main.32660092.js.map": "/RS-Lang-App/static/js/main.32660092.js.map",
+    "static/media/audioSvg.svg": "/RS-Lang-App/static/media/audioSvg.12f7bb1530eb192efd137958cdea6c24.svg",
+    "static/media/log-out-outline.svg": "/RS-Lang-App/static/media/log-out-outline.316dd325ee26da2ef13734bd761092da.svg",
+    "main.ed80cb2b.css.map": "/RS-Lang-App/static/css/main.ed80cb2b.css.map",
+    "main.ac1bfe07.js.map": "/RS-Lang-App/static/js/main.ac1bfe07.js.map",
     "787.28cb0dcd.chunk.js.map": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae81de1d.css",
-    "static/js/main.32660092.js"
+    "static/css/main.ed80cb2b.css",
+    "static/js/main.ac1bfe07.js"
   ]
 }

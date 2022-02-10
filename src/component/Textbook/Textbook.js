@@ -10,15 +10,14 @@ function Textbook() {
       const [loading, setLoading] = useState(true);
       const [page, setPage] = useState(0);
       const [groupe, setGroupe] = useState(0);
-      const [pagination, setPagination] = useState(0) 
-      useEffect(async () => {
-            setLoading(true);
-            const res = await fetch(
-                  `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
-            );
-            setWords(await res.json());
-            setLoading(false);
-      }, [page, groupe]);
+      useEffect(async function () {
+          setLoading(true);
+          const res = await fetch(
+            `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+          );
+          setWords(await res.json());
+          setLoading(false);
+        }, [page, groupe]);
       function handleClick(event) {
             const { value } = event.target.closest(".level");
             const [groupeValue, pageValue] = value.split("-");
@@ -27,7 +26,7 @@ function Textbook() {
       }
       function handleClickPag(event){
         const numberPageinPAgination = event.target.innerHTML
-        setPage(numberPageinPAgination)
+        setPage(Number(numberPageinPAgination) - 1)
       }
       return (
             <div className="textbook">
