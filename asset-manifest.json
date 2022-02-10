@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/RS-Lang-App/static/css/main.3f59fdec.css",
-    "main.js": "/RS-Lang-App/static/js/main.bf6bec55.js",
+    "main.css": "/RS-Lang-App/static/css/main.ed80cb2b.css",
+    "main.js": "/RS-Lang-App/static/js/main.ac1bfe07.js",
     "static/js/787.28cb0dcd.chunk.js": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js",
     "static/media/overview.jpg": "/RS-Lang-App/static/media/overview.47948e8d45aca3a88983.jpg",
     "static/media/misha.jpg": "/RS-Lang-App/static/media/misha.320dee3a363fb9fe5ddc.jpg",
@@ -12,12 +12,12 @@
     "index.html": "/RS-Lang-App/index.html",
     "static/media/audioSvg.svg": "/RS-Lang-App/static/media/audioSvg.12f7bb1530eb192efd137958cdea6c24.svg",
     "static/media/log-out-outline.svg": "/RS-Lang-App/static/media/log-out-outline.316dd325ee26da2ef13734bd761092da.svg",
-    "main.3f59fdec.css.map": "/RS-Lang-App/static/css/main.3f59fdec.css.map",
-    "main.bf6bec55.js.map": "/RS-Lang-App/static/js/main.bf6bec55.js.map",
+    "main.ed80cb2b.css.map": "/RS-Lang-App/static/css/main.ed80cb2b.css.map",
+    "main.ac1bfe07.js.map": "/RS-Lang-App/static/js/main.ac1bfe07.js.map",
     "787.28cb0dcd.chunk.js.map": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f59fdec.css",
-    "static/js/main.bf6bec55.js"
+    "static/css/main.ed80cb2b.css",
+    "static/js/main.ac1bfe07.js"
   ]
 }
