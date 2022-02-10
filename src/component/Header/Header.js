@@ -23,9 +23,9 @@ function Header() {
     <header className="header">
       <h1>RS Lang</h1>
       <div className="block__login">
-        <button className="button__log-in" onClick={handleClickLogin}><img src={loginSvg} width="20px" alt="logSvg" />  <span>{localStorage.getItem(`UserName`) || `LOGIN`}</span></button>
+        <button className="button__log-in" onClick={handleClickLogin}><img src={loginSvg} width="20px" alt="logSvg" />  <span>{localStorage.getItem(`UserName`) || `Вход`}</span></button>
         <button className="button__log-out" onClick={logout} >
-          <img src={logOutSvg} width="20px" alt="logSvg" /> <span>LOGOUT</span></button>
+          <img src={logOutSvg} width="20px" alt="logSvg" /> <span>Выйти</span></button>
       </div>
     </header>
   );

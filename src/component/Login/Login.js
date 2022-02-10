@@ -93,30 +93,30 @@ function Login() {
         <img src={closeButton} alt="close" className="close__button" onClick={handleClickClose} />
         <div className="title">
           <img src={loginImg} alt="login" width="50px" />
-          <h3>Login</h3>
+          <h3>Вход</h3>
         </div>
         <form onSubmit={handleSubmit} method="post">
           <input
             type="login"
             className="login-input"
-            placeholder="Login..."
+            placeholder="имя"
             value={userLog.email}
             onChange={e => setUserLog({ ...userLog, email: e.target.value })} />
           <p className='uncorrect-login'>Пользователя с таким email не существует</p>
           <input
             type="password"
             className="password"
-            placeholder="Password..."
+            placeholder="пороль"
             value={userLog.password}
             onChange={e => setUserLog({ ...userLog, password: e.target.value })} />
           <p className='uncorrect-password'>Неверный пароль</p>
           <div className="show__pass">
             <input type="checkbox" className="show__pass-input" onClick={handleShowPass} />
-            <span>Show password</span>
+            <span>Показать пороль</span>
           </div>
 
-          <input type="submit" className="submit" value="Sing In" />
-          <p onClick={handleClick}>Don't have an account? Sing Up</p>
+          <input type="submit" className="submit" value="Войти" />
+          <p onClick={handleClick}>регистрация</p>
         </form>
       </div>
     </div>

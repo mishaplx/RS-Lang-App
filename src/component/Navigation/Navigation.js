@@ -8,19 +8,19 @@ function Navigation() {
       <ul>
         <li>
           <span className="nav__icon"></span>
-          <Link to="/" className="nav__name">Menu</Link>
+          <Link to="/" className="nav__name">Меню</Link>
         </li>
         <li>
         <span className="nav__icon"></span>
-        <Link to="/textbook" className="nav__name">Textbook</Link>
+        <Link to="/textbook" className="nav__name">Электронный учебник</Link>
         </li>
         <li>  
           <span className="nav__icon"></span>
-          <Link to="/minigames" className="nav__name">MiniGames</Link>
+          <Link to="/minigames" className="nav__name">Мини-игры</Link>
         </li>
         <li> 
           <span className="nav__icon"></span>
-          <Link to="/statistics" className="nav__name">Statistic</Link>
+          <Link to="/statistics" className="nav__name">Статистика</Link>
         </li>
       </ul>
     </nav>
