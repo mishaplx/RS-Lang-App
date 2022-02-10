@@ -1,4 +1,4 @@
-import Member from '../Member/Member'
+import Member from './Member/Member'
 import './Team.css'
 
 function Team() {
