@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import "./Textbook.css";
 import WordCard from "./WordCard/WordCard";
 import WordItem from "./WordItem/WordItem";
+import Pagination from './Pagination/Pagination'
 function Textbook() {
+  const arrPagin = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+
       const [words, setWords] = useState([]);
       const [loading, setLoading] = useState(true);
       const [page, setPage] = useState(0);
       const [groupe, setGroupe] = useState(0);
-
+      const [pagination, setPagination] = useState(0) 
       useEffect(async () => {
             setLoading(true);
             const res = await fetch(
@@ -21,6 +24,10 @@ function Textbook() {
             const [groupeValue, pageValue] = value.split("-");
             setPage(pageValue);
             setGroupe(groupeValue);
+      }
+      function handleClickPag(event){
+        const numberPageinPAgination = event.target.innerHTML
+        setPage(numberPageinPAgination)
       }
       return (
             <div className="textbook">
@@ -80,7 +87,7 @@ function Textbook() {
                                     ) : (
                                           <div className="word__block-flex">
                                                 {words.map((element) => (
-                                                      <WordItem
+                                                      <WordItem 
                                                             key={element.word}
                                                             word={element.word}
                                                             wordTranslate={
@@ -97,12 +104,12 @@ function Textbook() {
                         </div>
                   </div>
                   <div className="pagination">
-                        <p className="number__page" data-index-number="0">
-                              0
-                        </p>
-                        <p className="number__page" data-index-number="1">
-                              1
-                        </p>
+                   {
+                     arrPagin.map((el) => (
+                       <Pagination number = {el}
+                       onClick = {handleClickPag}/>
+                     ))
+                   }
                   </div>
                   <div className="game">
                         <h3 className="game__title">Игры</h3>
