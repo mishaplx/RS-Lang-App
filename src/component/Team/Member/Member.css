@@ -1,0 +1,137 @@
+.member-content {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #000;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  column-gap: 30px;
+}
+
+.member-content img {
+  height: 150px;
+  object-fit: contain;
+  border-radius: 5px;
+  border: 5px outset #fff;
+  box-shadow: 2px 2px 7px 2px #000;
+  margin-top: 40px;
+}
+
+.member-sub-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  text-align: center;
+}
+
+.member-sub-content h3 {
+  margin-top: 10px;
+  font-size: 26px;
+  font-family: Roboto;
+}
+
+.member-sub-content span {
+  margin: 5px 0 10px 0;
+  font-family: Neucha;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.member-sub-content p {
+  cursor: default;
+  color: #000;
+  width: 100%;
+  font-size: 18px;
+}
+
+.container-github {
+  margin-top: 10px;
+  display: flex;
+  min-width: 100%;
+  flex-direction: column-reverse;
+}
+
+.container-github img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: 0;
+  box-shadow: 2px 2px 2px #000;
+  transition: 0.4s;
+}
+
+.container-github p {
+  margin-top: 0;
+}
+
+.container-github img:hover {
+  transition: 0.4s;
+  opacity: 0.6;
+}
+
+.info-about-member span {
+  font-family: Roboto;
+  font-size: 18px;
+  display: block;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: rgb(110, 245, 211);
+}
+
+.container-github span {
+  font-family: Roboto;
+  font-size: 18px;
+  display: block;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: rgb(110, 245, 211);
+}
+
+@media (max-width: 700px) {
+  .member-content {
+    flex-direction: column;
+  }
+  .member-content img {
+    height: 200px;
+    margin-top: 10px;
+  }
+  .container-github img {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (max-width: 520px) {
+  .member-content {
+    flex-direction: column;
+  }
+  .member-content img {
+    height: 150px;
+  }
+  .container-github img {
+    width: 40px;
+    height: 40px;
+  }
+  .member-sub-content h3 {
+    font-size: 24px;
+  }
+  .member-sub-content span {
+    font-size: 20px;
+  }
+  .member-sub-content p {
+    font-size: 16px;
+  }
+  .info-about-member span {
+    font-size: 18px;
+  }
+  .container-github span {
+    font-size: 18px;
+  }
+  .member-sub-content {
+    min-width: 200px;
+    max-width: 200px;
+  }
+}
