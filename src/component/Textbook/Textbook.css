@@ -52,11 +52,13 @@ margin-bottom: 10px;
 }
 .audioCall-game, .sprint-game{
   padding: 10px;
+  margin-bottom: 10px;
   border-radius: 20px;
   background-color: rgb(238, 238, 238);
   min-width: 400px;
-  max-width: 500px;
+  max-width: 400px;
   height: 300px;
+  cursor: pointer;
 }
 .audioCall-game:hover, .sprint-game:hover{
   background-color: rgb(178, 250, 226);

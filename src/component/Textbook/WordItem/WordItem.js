@@ -1,13 +1,11 @@
-
-import './WordItem.css';
-function WordItem(props) {
-  return (
-    <div className="word-item">
-
-     <p className='word-english'>{props.text}</p>
-     <p className='word-english'>столица</p>
-    </div>
-  );
+import "./WordItem.css";
+function WordItem({ word, wordTranslate }) {
+      return (
+            <div className="word-item">
+                  <p className="word-english">{word}</p>
+                  <p className="word-english">{wordTranslate}</p>
+            </div>
+      );
 }
 
 export default WordItem;
