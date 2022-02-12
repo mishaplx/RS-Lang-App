@@ -12,3 +12,21 @@ p{
   margin: 5px 0px;
   font-size: 20px;
 }
+.word__card-img{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.word__card-audio img{
+  cursor: pointer;
+}
+.word__card-audio-flex{
+  /* display: flex;
+  align-items: center; */
+}
+.word__card-transcription{
+  margin-right: 10px;
+}
+audio{
+  display: none;
+}
