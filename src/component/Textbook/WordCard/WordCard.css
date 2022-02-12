@@ -21,8 +21,8 @@ p{
   cursor: pointer;
 }
 .word__card-audio-flex{
-  /* display: flex;
-  align-items: center; */
+  display: flex;
+  align-items: center;
 }
 .word__card-transcription{
   margin-right: 10px;

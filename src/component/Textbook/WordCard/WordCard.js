@@ -5,9 +5,9 @@ function WordCard({el}) {
  const imgSrc = `https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.image}`
  
  function handleClickAudio(){
-   const audio1 = document.querySelector(".audio1")
+  const audio1 = document.querySelector(".audio1")
   audio1.play()
-  //console.log(audioNL.length);
+
  }
  function handleClickAudioEnded1(){
   const audio2 = document.querySelector(".audio2")
