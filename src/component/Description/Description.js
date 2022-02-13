@@ -1,5 +1,6 @@
 import './Description.css'
 import Option from '../Option/Option'
+import { Link } from 'react-router-dom'
 
 function Description() {
   const sources = [
@@ -19,9 +20,15 @@ function Description() {
           Описание и возможности приложения
         </h2>
         <div className="description-content-options">
+          <Link to="/textbook">
           <Option image={options[0].image} title={options[0].title} description={options[0].description} />
+          </Link>
+          <Link to="/statistics">
           <Option image={options[1].image} title={options[1].title} description={options[1].description} />
+          </Link> 
+          <Link to="/minigames">
           <Option image={options[2].image} title={options[2].title} description={options[2].description} />
+          </Link>
         </div>
       </div>
     </div>

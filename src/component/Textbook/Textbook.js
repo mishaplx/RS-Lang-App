@@ -4,8 +4,7 @@ import WordCard from "./WordCard/WordCard";
 import WordItem from "./WordItem/WordItem";
 import Pagination from "./Pagination/Pagination";
 import React from "react";
-import {BrowserRouter as Router,  Route,  Link } from "react-router-dom";
-import App from "../App/App";
+import {Link} from "react-router-dom";
 function Textbook() {
   const arrPagin = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -145,14 +144,14 @@ function Textbook() {
         <h3 className="game__title">Игры</h3>
         <p className="game__subtitle">Закрепи новые слова при помощи игр.</p>
         <div className="game__flex">
-          <a className="audioCall-game" href="/minigames">
+          <Link to ="/minigames" className="audioCall-game" >
             <h3>Аудиовызов</h3>
             <p>Попробуй понять, какое слово было произнесено.</p>
-          </a>
-          <a className="sprint-game" href="/minigames">
+          </Link>
+          <Link to ="/minigames" className="sprint-game" href="/minigames">
             <h3>Спринт</h3>
             <p>Как можно быстрее определи верный перевод слова или нет.</p>
-          </a>
+          </Link>
         </div>
       </div>
       

@@ -2,6 +2,7 @@ import './Option.css'
 
 function Option({ image, title, description }) {
   return (
+    
     <div className="option">
       <div className="option-content">
         <img src={image} alt="Картинка" />
@@ -15,6 +16,7 @@ function Option({ image, title, description }) {
         </div>
       </div>
     </div>
+    
   )
 }
 
