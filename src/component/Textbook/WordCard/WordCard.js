@@ -3,7 +3,9 @@ import './WordCard.css';
 import audioSvg from '../../../assets/audioSvg.svg'
 function WordCard({el}) {
  const imgSrc = `https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.image}`
+
  
+
  function handleClickAudio(){
   const audio1 = document.querySelector(".audio1")
   audio1.play()
@@ -29,7 +31,7 @@ function WordCard({el}) {
           <img src={audioSvg} alt= "audio" width="20px" />
         </span>
         <audio controls className='audio1' onEnded = {handleClickAudioEnded1}>
-           <source src={`https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${ el.audio}`} type="audio/ogg" />
+           <source src={`https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.audio}`} type="audio/ogg" />
         </audio>
         <audio controls className='audio2' onEnded = {handleClickAudioEnded2}>
            <source src={`https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.audioMeaning}`} type="audio/mpeg" />

@@ -99,7 +99,7 @@ function Login() {
           <input
             type="login"
             className="login-input"
-            placeholder="имя"
+            placeholder="электронная почта"
             value={userLog.email}
             onChange={e => setUserLog({ ...userLog, email: e.target.value })} />
           <p className='uncorrect-login'>Пользователя с таким email не существует</p>
