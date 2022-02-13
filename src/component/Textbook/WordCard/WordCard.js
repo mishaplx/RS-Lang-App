@@ -3,6 +3,9 @@ import './WordCard.css';
 import audioSvg from '../../../assets/audioSvg.svg'
 function WordCard({el}) {
  const imgSrc = `https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.image}`
+ const elementtextMeaning =  el.textMeaning.split('<i>').join('').split('</i>').join('')
+ const elementtextExample =  el.textExample.split('<b>').join('').split('</b>').join('')
+
 
  
 
@@ -41,10 +44,10 @@ function WordCard({el}) {
         </audio>
       </div>
       <h3 className='word__card-textMeaning-title'>Значение</h3>
-      <p className='word__card-textMeaning'>{el.textMeaning}</p>
+      <p className='word__card-textMeaning'>{elementtextMeaning}</p>
       <p className='word__card-textMeaning-translate'>{el.textMeaningTranslate}</p>
       <h3 className='word__card-textMeaning-title'>Пример</h3>
-      <p className='word__card-textExample'>{el.textExample}</p>
+      <p className='word__card-textExample'>{elementtextExample}</p>
       <p className='word__card-textExample-translate'>{el.textExampleTranslate}</p>
     </div>
   );
