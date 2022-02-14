@@ -12,6 +12,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Sprintgame from '../Sprintgame/Sprintgame';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/textbook" element={<Textbook />}/>
         <Route path="/minigames" element={<Minigames />}/>
         <Route path="/statistics" element={<Statistics />}/>
+        <Route path="/sprint" element={<Sprintgame />}/>
       </Routes>
      </div>
      <Footer/>
