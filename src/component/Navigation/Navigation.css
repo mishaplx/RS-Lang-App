@@ -1,5 +1,5 @@
 nav{
-  width:300px;
+  width: 200px;
   background-color: rgb(110, 245, 211);
 }
 ul{
@@ -8,4 +8,12 @@ ul{
 ul li{
   cursor: pointer;
   margin:5px;
+ 
+}
+.nav__name{
+  display: flex;
+  align-items: center;
+}
+.nav__icon{
+  margin-right: 10px;
 }

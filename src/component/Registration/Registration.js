@@ -98,36 +98,36 @@ function Registration() {
       <img src={closeButton} alt="close" className="close__button" onClick={handleClickClose} />
       <div className="title">
         <img src={loginImg} alt="login" width="50px" />
-        <h3>Registration</h3>
+        <h3>Регистрация</h3>
       </div>
       <form onSubmit={handleSubmit} method="post" className="registration__form">
         <input
           type="text"
           className="name__user"
-          placeholder="Name..."
+          placeholder="имя..."
           value={user.name}
           onChange={e => setUser({ ...user, name: e.target.value })} />
         <p className='uncorrect-name'>Введите имя</p>
         <input
           type="email"
           className="login-input"
-          placeholder="example@gmail.com"
+          placeholder="элекронная почта..."
           value={user.email}
           onChange={e => setUser({ ...user, email: e.target.value })} />
         <p className='user-register'>Пользователь с таким email уже зарегистрирован</p>
         <input
           type="password"
           className="passwordReg"
-          placeholder="Password..."
+          placeholder="пороль..."
           value={user.password}
           onChange={e => setUser({ ...user, password: e.target.value })} />
         <p className='uncorrect-pass'>Пароль должен содержать не менее 8 символов</p>
         <div className="show__pass">
           <input type="checkbox" className="show__pass-inputReg" onClick={handleShowPassReg} />
-          <span>Show password</span>
+          <span>показать пороль</span>
         </div>
-        <input type="submit" className="submit" value="Sing Up" />
-        <p onClick={handleClickReg}>Do you have an account? Sing Ip</p>
+        <input type="submit" className="submit" value="Регистрация" />
+        <p onClick={handleClickReg}>Вход</p>
       </form>
     </div>
   )
