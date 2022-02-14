@@ -16,7 +16,6 @@ function Login() {
     const passwordInput = document.querySelector('.password')
     const uncorrectLogin = document.querySelector('.uncorrect-login')
     const uncorrectPassword = document.querySelector('.uncorrect-password')
-
     if (rawResponse.ok) {
       const content = await rawResponse.json();
       localStorage.setItem(userLog.email, content.token)
@@ -32,12 +31,14 @@ function Login() {
       }
     } else {
       if (rawResponse.status === 403) {
+        loginInput.value = userLog.email
         passwordInput.classList.add('uncorrect-input')
         uncorrectPassword.style.display = 'block'
         uncorrectLogin.style.display = 'none'
         loginInput.classList.remove('uncorrect-input')
       }
       if (rawResponse.status === 404) {
+        loginInput.value = userLog.email
         loginInput.classList.add('uncorrect-input')
         passwordInput.classList.remove('uncorrect-input')
         uncorrectLogin.style.display = 'block'
