@@ -4,12 +4,12 @@ import './Team.css'
 function Team() {
   const avatars = [
     `${require(`../../assets/team/misha.jpg`)}`,
-    `${require(`../../assets/team/misha.jpg`)}`,
+    `${require(`../../assets/team/vitaly.jpg`)}`,
     `${require(`../../assets/team/nikita.jpg`)}`
   ]
   const members = [
     { avatar: avatars[0], FIO: 'Михаил Плехневич', description: '24 года, изучаю JS 6 месяцев Разработал:........ Навыки: JavaScript, TypeScript, GIT, Webpack, SASS/SCSS, NodeJs(основы), React(основы) ', githubLink: 'https://github.com/mishaplx', githubName: 'mishaplx' },
-    { avatar: avatars[1], FIO: 'Виталий Сорока', description: 'инфа о тебе.....', githubLink: 'https://github.com/vitalysoroko95', githubName: 'vitalysoroko95' },
+    { avatar: avatars[1], FIO: 'Виталий Сорока', description: '27 года, изучаю JS 6 месяцев Навыки: JavaScript, TypeScript, GIT, Webpack, SASS/SCSS, NodeJs(основы), React(основы)', githubLink: 'https://github.com/vitalysoroko95', githubName: 'vitalysoroko95' },
     { avatar: avatars[2], FIO: 'Никита Кислый', description: `20 лет, студент 3-го курса, БарГу, по специальности "Информационные системы и технологии". Навыки: JavaScript, TypeScript, GIT, Webpack, SASS/SCSS, NodeJs(основы), React(основы)`, githubLink: 'https://github.com/KISLY74', githubName: 'KISLY74' }
   ]
   return (

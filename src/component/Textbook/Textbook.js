@@ -5,6 +5,7 @@ import WordItem from "./WordItem/WordItem";
 import Pagination from "./Pagination/Pagination";
 import React from "react";
 import {Link} from "react-router-dom";
+import Minigames from "../Minigames/Minigames";
 function Textbook() {
   const arrPagin = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -139,22 +140,7 @@ function Textbook() {
           <Pagination number={el} key={el} onClick={handleClickPag} />
         ))}
       </div>
-      
-      <div className="game">
-        <h3 className="game__title">Игры</h3>
-        <p className="game__subtitle">Закрепи новые слова при помощи игр.</p>
-        <div className="game__flex">
-          <Link to ="/minigames" className="audioCall-game" >
-            <h3>Аудиовызов</h3>
-            <p>Попробуй понять, какое слово было произнесено.</p>
-          </Link>
-          <Link to ="/minigames" className="sprint-game" href="/minigames">
-            <h3>Спринт</h3>
-            <p>Как можно быстрее определи верный перевод слова или нет.</p>
-          </Link>
-        </div>
-      </div>
-      
+      <Minigames />     
     </div>
   );
 }

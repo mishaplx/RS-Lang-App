@@ -25,7 +25,7 @@ function App() {
         <Route path="/textbook" element={<Textbook />}/>
         <Route path="/minigames" element={<Minigames />}/>
         <Route path="/statistics" element={<Statistics />}/>
-        <Route path="/sprint" element={<Sprintgame />}/>
+        <Route path="/minigames/sprint" element={<Sprintgame />}/>
       </Routes>
      </div>
      <Footer/>
