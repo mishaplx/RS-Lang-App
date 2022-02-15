@@ -1,0 +1,19 @@
+.sprint {
+    margin: auto;
+}
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start-screen__title {
+    text-align: center;
+}
+
+.active {
+    border: 2px solid rgb(110, 245, 211);
+}
+
+
