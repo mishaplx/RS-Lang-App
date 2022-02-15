@@ -1,14 +1,18 @@
 
 import './WordCard.css';
 import audioSvg from '../../../assets/audioSvg.svg'
+import React from 'react';
 function WordCard({el}) {
  const imgSrc = `https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.image}`
- const elementtextMeaning =  el.textMeaning.split('<i>').join('').split('</i>').join('')
- const elementtextExample =  el.textExample.split('<b>').join('').split('</b>').join('')
 
-
- 
-
+ function createMarkuptextExample() {
+  return {
+     __html: el.textExample };
+};
+function  createMarkuptextMeaning(){
+  return {
+     __html: el.textMeaning };
+};
  function handleClickAudio(){
   const audio1 = document.querySelector(".audio1")
   audio1.play()
@@ -44,10 +48,12 @@ function WordCard({el}) {
         </audio>
       </div>
       <h3 className='word__card-textMeaning-title'>Значение</h3>
-      <p className='word__card-textMeaning'>{elementtextMeaning}</p>
+      <p className='word__card-textMeaning'   dangerouslySetInnerHTML={createMarkuptextMeaning()}>
+      
+      </p>
       <p className='word__card-textMeaning-translate'>{el.textMeaningTranslate}</p>
       <h3 className='word__card-textMeaning-title'>Пример</h3>
-      <p className='word__card-textExample'>{elementtextExample}</p>
+      <p className='word__card-textExample' dangerouslySetInnerHTML={createMarkuptextExample()}></p>
       <p className='word__card-textExample-translate'>{el.textExampleTranslate}</p>
     </div>
   );
