@@ -1,64 +1,36 @@
 import './Sprintgame.css' 
-
-import {useState} from 'react';
+import {Link} from "react-router-dom";
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function Sprintgame() {
 
 
 
-  const words =[
-    {
-        word: 'cat',
-        translate: 'кот',
-        id: 1
-    },
-    {
-        word: 'dog',
-        translate: 'собака',
-        id: 2
-    },
-    {
-        word: 'pig',
-        translate: 'свинья',
-        id: 3
-    },
-    {
-        word: 'wolf',
-        translate: 'волк',
-        id: 4
-    },
-    {
-        word: 'snake',
-        translate: 'змея',
-        id: 5
-    },
-    {
-        word: 'home',
-        translate: 'дом',
-        id: 6
-    },
-    {
-        word: 'sun',
-        translate: 'солнце',
-        id: 7
-    },
-    {
-        word: 'tree',
-        translate: 'дерево',
-        id: 8
-    },
-    {
-        word: 'screen',
-        translate: 'экран',
-        id: 9
-    }
-];
+
 
 const [currentQuestion, setCurrentQuestion] = useState(0);
 const [showScore, setShowScore] = useState(false);
 const [score, setScore] = useState(0);
 const [isGameStart, setGameStart ] = useState(false);
 const [isGameOver, setGameOver ] = useState(false);
+const [timeLeft, setTimeLeft] = useState(30);
+const [words, setWords] = useState([]);
+const [loading, setLoading] = useState(false);
+
+
+
+async function getWords(group = 1 , page = 1){
+  
+  setLoading(true);
+  try{
+    const res = await axios.get(`https://react-rs-language.herokuapp.com/words?group=${group}&page=${page}`);
+    setWords(res.data);
+  } catch(e){
+    console.log(e);
+  }
+  setLoading(false);
+}
 
 
 function getRandomInt(min, max) {
@@ -67,42 +39,68 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+useEffect(() => {
+  let timer;
+  if (!isGameOver && isGameStart) {
+    timer = setTimeout(() => {
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
+  }
+  if (timeLeft === 0) {
+    setShowScore(true);
+    setCurrentQuestion(0);
+    setTimeLeft(30);
+  }
+  return () => clearTimeout(timer);
+}, [timeLeft]);
+
+
 const handleAnswer = (event) => {
-    
+
     const target = event.target;
-
-
     let trnslWord = document.querySelector('.translate-word').textContent;
 
-if (target.className === 'true-button' && trnslWord=== words[currentQuestion].translate) {
-  console.log(true);
+    if (target.className === 'true-button' && trnslWord === words[currentQuestion].wordTranslate) {
         setScore(score + 1);
-}
-    if (target.className === 'false-button' && trnslWord !== words[currentQuestion].translate) {
-  console.log(true);
+    }
+    if (target.className === 'false-button' && trnslWord !== words[currentQuestion].wordTranslate) {
         setScore(score + 1);
-}
+    }
 
-const nextQuestion = currentQuestion + 1;
+  const nextQuestion = currentQuestion + 1;
 
-if (nextQuestion < words.length) {
-  setCurrentQuestion(nextQuestion);
-} else {
-  setShowScore(true);
-} 
-};
+  if (nextQuestion < words.length) {
+    setCurrentQuestion(nextQuestion);
+    } else {
+    setShowScore(true);
+    setCurrentQuestion(0);
+    } 
+  };
 
-const chooseLevel = (event)=>{
+  const chooseLevel = (event)=>{
   const target = event.target;
+  const allTargets = document.querySelectorAll('.active');
+
+  allTargets.forEach(el =>{
+    el.classList.remove('active')
+  })
+
   if(target.className != 'active'){ 
     target.classList.toggle('active')
+    group = target.dataset.id;
+    console.log(group);
   }
-  console.log(target)
+  
+  
+
 }
+let group = 1;
 
 function startGame(){
   setGameStart(true);
   setGameOver(false);
+  setScore(0);
+  getWords(group, getRandomInt(0, 30))
 }
 
 function back(){
@@ -115,51 +113,50 @@ function back(){
   return (
       <main className="main">
         <div className="sprint">
-        {!isGameStart &&  !isGameOver && (
+          {!isGameStart &&  !isGameOver && (
             <div className="start-screen">
             <div className="start-screen__title">
               <p className="sprint-game__title">Спринт</p>
               <p className="sprint-game__description">Как можно быстрее определи верный перевод слова или нет!</p>
             </div>
             <div className="start-screen__menu">
-              <p className="start-screen__menu_title">Выберите уровень сложности</p>
-            <div className="start-screen__menu_buttons">
-                  <div className="level-button" role="button"  onClick={chooseLevel}>A1</div>
-                  <div className="level-button" role="button"  onClick={chooseLevel}>A2</div>
-                  <div className="level-button" role="button"  onClick={chooseLevel}>B1</div>
-                  <div className="level-button" role="button"  onClick={chooseLevel}>B2</div>
-                  <div className="level-button" role="button"  onClick={chooseLevel}>C1</div>
-                  <div className="level-button" role="button"  onClick={chooseLevel}>C2</div>
-              </div>
+              <p className="start-screen__menu_title">Выбери уровень сложности :</p>
+                <div className="start-screen__menu_buttons">
+                  <div className="level-button" role="button" data-id="0" onClick={chooseLevel}>A1</div>
+                  <div className="level-button" role="button" data-id="1" onClick={chooseLevel}>A2</div>
+                  <div className="level-button" role="button" data-id="2" onClick={chooseLevel}>B1</div>
+                  <div className="level-button" role="button" data-id="3" onClick={chooseLevel}>B2</div>
+                  <div className="level-button" role="button" data-id="4" onClick={chooseLevel}>C1</div>
+                  <div className="level-button" role="button" data-id="5" onClick={chooseLevel}>C2</div>
+                </div>
               <button className="start-game-button" onClick={startGame}>Начать</button>
               </div>
-          </div> 
+            </div> 
           )} 
 
           {isGameStart && !isGameOver && (
             <div className='game'>
-            {showScore && (
+              {showScore && (
                 <div className='score-section'>
                     <div className='score-section__score'>
-                    Вы набрали {score} из {words.length}
+                    Вы угадали {score} слов!
                     </div>
+                    <div className='score-section__buttons'>
                     <button onClick = {back}>Назад</button>
+                    <button onClick = {back} ><Link to="/">На главную</Link></button>
+                    </div>
                 </div>
-            )}
-    
-            {!showScore &&(
-            <div className='game-wrapper'>
-              <div className='timer'>30</div>
-              <div className='question-block'>
+              )}
+              {!showScore &&(
+              <div className='game-wrapper'>
+                <div className='timer'><span className='timer-icon'></span>{timeLeft}</div>
+                {loading ? <h1>Заргузка</h1> : <div className='question-block'>
                   <span className='first-word'>
-                  {words[currentQuestion].word}</span> 
-                   это  
-                  <span className='translate-word'>{words[getRandomInt(0, words.length)].translate}</span>
-                   ?
-                  </div>
+                  {words[currentQuestion].word}</span> это <span className='translate-word'>{words[getRandomInt(0, words.length)].wordTranslate}</span>?
+                </div> } 
               <div className='answers-block'>
-                <button className='true-button' onClick={handleAnswer}>Верно</button>
-                <button className='false-button' onClick={handleAnswer}>Не верно</button>
+                <button className='true-button' onClick={handleAnswer}>Да</button>
+                <button className='false-button' onClick={handleAnswer}>Нет</button>
               </div>
             </div>)}
           </div> 
