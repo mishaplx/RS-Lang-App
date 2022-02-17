@@ -18,6 +18,12 @@ function Textbook() {
   const [groupe, setGroupe] = useState(0);
   const [englishWordState, setEnglishWord] = useState("alcohol");
   const [objState, setobj] = useState([]);
+  const [loginState, setLogin] = useState(false)
+
+  function chechLogin(){
+    localStorage.getItem(`UserName`) !== null ? setLogin(true) : setLogin(false)
+    return loginState
+  }
 
   useEffect(
     async function () {
@@ -31,6 +37,7 @@ function Textbook() {
     },
     [page, groupe]
   );
+
   useEffect(
     async function () {
       const req = await fetch(
@@ -125,11 +132,7 @@ function Textbook() {
             )}
           </div>
           <div className="word__description">
-        
-            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : objState.map(el => <WordCard el={el} />)}
-           
-            
-           
+            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : objState.map(el => <WordCard el={el} chechLogin = {chechLogin} />)}
           </div>
         </div>
       </div>

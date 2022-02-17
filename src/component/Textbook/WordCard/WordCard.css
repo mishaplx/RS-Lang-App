@@ -42,3 +42,13 @@ audio{
 .info-reg{
   font-weight: 600;
 }
+.hide{
+  opacity: 0;
+  transition: .2s;
+  visibility: hidden;
+}
+.hard-word-checked{
+  padding: 5px;
+  background-color: rgb(255, 130, 92);
+  border-radius: 10px;
+}
