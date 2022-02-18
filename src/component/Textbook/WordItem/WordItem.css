@@ -10,7 +10,13 @@
   flex-wrap: wrap;
   padding: 5px;
   margin: 5px;
+  position: relative;
 }
 .word-item:hover{
   box-shadow: 2px -1px 5px #8f8f8f;
+}
+.checkbox{
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }

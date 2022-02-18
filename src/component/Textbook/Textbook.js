@@ -4,8 +4,9 @@ import WordCard from "./WordCard/WordCard";
 import WordItem from "./WordItem/WordItem";
 import Pagination from "./Pagination/Pagination";
 import React from "react";
-import {Link} from "react-router-dom";
 import Minigames from "../Minigames/Minigames";
+import ClipLoader from "react-spinners/ClipLoader";
+
 function Textbook() {
   const arrPagin = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -15,38 +16,44 @@ function Textbook() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [groupe, setGroupe] = useState(0);
-  const [englishWordState, setEnglishWord] = useState('alcohol');
+  const [englishWordState, setEnglishWord] = useState("alcohol");
   const [objState, setobj] = useState([]);
+  const [loginState, setLogin] = useState(false)
+
+  function chechLogin(){
+    localStorage.getItem(`UserName`) !== null ? setLogin(true) : setLogin(false)
+    return loginState
+  }
+
   useEffect(
     async function () {
       setLoading(true);
       const req = await fetch(
         `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
       );
-      const res = await req.json()
+      const res = await req.json();
       setWords(res);
       setLoading(false);
     },
     [page, groupe]
   );
+
   useEffect(
-    async function(){
-      
+    async function () {
       const req = await fetch(
         `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
       );
-      const res = await req.json()
-      let obj = res.filter(el => el.word === englishWordState)
-      setobj(obj)
+      const res = await req.json();
+      let obj = res.filter(el => el.word === englishWordState);
+      setobj(obj);
       setLoading(false);
-    },[englishWordState]
-
-  )
-  function handleClickWordItem(event){
+    },
+    [englishWordState]
+  );
+  function handleClickWordItem(event) {
     setLoading(true);
-    const englishWord = event.target.parentNode.children[0].innerHTML 
-    setEnglishWord(englishWord)
-    
+    const englishWord = event.target.parentNode.children[0].innerHTML;
+    setEnglishWord(englishWord);
   }
   function handleClick(event) {
     const { value } = event.target.closest(".level");
@@ -110,28 +117,22 @@ function Textbook() {
         <h3 className="word__title">Слова</h3>
         <div className="word__flex">
           <div className="word__block">
-            {loading ? (
-              "Loading..."
-            ) : (
+            {loading ? 
+            <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : (
               <div className="word__block-flex">
                 {words.map(element => (
                   <WordItem
                     key={element.word}
                     word={element.word}
                     wordTranslate={element.wordTranslate}
-                    onClick = {handleClickWordItem}
+                    onClick={handleClickWordItem}
                   />
                 ))}
               </div>
             )}
           </div>
           <div className="word__description">
-            {loading ? ("Loading..."): (
-              objState.map(el =>(
-                <WordCard el = {el}/>
-              ))
-            )}
-
+            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : objState.map(el => <WordCard el={el} chechLogin = {chechLogin} />)}
           </div>
         </div>
       </div>
@@ -140,7 +141,8 @@ function Textbook() {
           <Pagination number={el} key={el} onClick={handleClickPag} />
         ))}
       </div>
-      <Minigames />     
+      <Minigames />
+      
     </div>
   );
 }

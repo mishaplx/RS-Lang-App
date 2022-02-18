@@ -1,8 +1,8 @@
 
 import './WordCard.css';
 import audioSvg from '../../../assets/audioSvg.svg'
-import React from 'react';
-function WordCard({el}) {
+
+function WordCard({el, chechLogin}) {
  const imgSrc = `https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.image}`
 
  function createMarkuptextExample() {
@@ -26,9 +26,15 @@ function  createMarkuptextMeaning(){
   const audio3 = document.querySelector(".audio3")
   audio3.play()
  }
-
+ function handleClickHardWord(){
+   const hardword = document.querySelector('.hard-word')
+   const hardwordchecked = document.querySelector('.hard-word-checked')
+   hardword.classList.toggle('hide')
+   hardwordchecked.classList.toggle('hide')
+ }
   return (
     <div className="word__card">
+
       <div className='word__card-img'> { <img src={imgSrc} alt='img' width='300'/>}</div>
       <div className='word__card-word'>{el.word} </div>
       <div className='word__card-word-translate'>{el.wordTranslate}</div>
@@ -53,8 +59,18 @@ function  createMarkuptextMeaning(){
       </p>
       <p className='word__card-textMeaning-translate'>{el.textMeaningTranslate}</p>
       <h3 className='word__card-textMeaning-title'>Пример</h3>
-      <p className='word__card-textExample' dangerouslySetInnerHTML={createMarkuptextExample()}></p>
+      <p className='word__card-textExample' dangerouslySetInnerHTML ={createMarkuptextExample()}></p>
       <p className='word__card-textExample-translate'>{el.textExampleTranslate}</p>
+      {chechLogin() ? (<div>
+        <button className='hard-word' onClick={handleClickHardWord}>Отметить как сложное слово</button>
+        <button className='hard-word-checked hide' onClick={handleClickHardWord}>Cлово отмеченно как сложное</button>
+      </div>
+      
+      ):
+       (
+       <p className='info-reg'>Авторизируйтесь что бы отмечать сложные слова </p>
+       )}
+      
     </div>
   );
 }
