@@ -150,7 +150,7 @@ function back(){
               {!showScore &&(
               <div className='game-wrapper'>
                 <div className='timer'><span className='timer-icon'></span>{timeLeft}</div>
-                {loading ? <h1>Заргузка</h1> : <div className='question-block'>
+                {loading ? <h1>Загрузка</h1> : <div className='question-block'>
                   <span className='first-word'>
                   {words[currentQuestion].word}</span> это <span className='translate-word'>{words[getRandomInt(0, words.length)].wordTranslate}</span>?
                 </div> } 
