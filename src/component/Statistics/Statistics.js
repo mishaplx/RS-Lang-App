@@ -1,17 +1,20 @@
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 
 function Statistic(props) {
-  
-  const sprintLearnedWords = useSelector(state=>{
-    const {sprintReducer} = state;
+
+  const sprintLearnedWords = useSelector(state => {
+    const { sprintReducer } = state;
     return sprintReducer.words;
   })
-  
-  
+  const audioCallLearnedWords = useSelector(state => {
+    const { audioCallReducer } = state;
+    return audioCallReducer.words;
+  })
+
   return (
-    
+
     <main className="main">
       <div className="today-statistic">
         <h2> Статистика за сегодня</h2>
@@ -26,7 +29,7 @@ function Statistic(props) {
           </div>
 
           <div className="games-statistics">
-          <h2>Статистика игр</h2>
+            <h2>Статистика игр</h2>
             <div className="sprint-statisic">
               <h3>Спринт</h3>
               <p>Изучено слов : {sprintLearnedWords}</p>
@@ -36,14 +39,14 @@ function Statistic(props) {
 
             <div className="audio-call-statisic">
               <h3>Аудиовызов</h3>
-              <p>Изучено слов : 0</p>
+              <p>Изучено слов : {audioCallLearnedWords}</p>
               <p>Правильных ответов (%) : 0</p>
               <p>Лучшая серия : 0</p>
             </div>
           </div>
         </div>
 
-                
+
       </div>
     </main>
   );
