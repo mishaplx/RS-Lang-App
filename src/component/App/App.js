@@ -13,24 +13,30 @@ import {
   Route
 } from "react-router-dom";
 import Sprintgame from '../Sprintgame/Sprintgame';
+import AudioCall from '../Minigames/AudioCall/AudioCall';
+import AudioCallGame from '../Minigames/AudioCall/AudioCallGame/AudioCallGame';
+import AudioCallEnd from '../Minigames/AudioCall/AudioCallEnd/AudioCallEnd';
 
 function App() {
   return (
     <div className="app">
-     <Header/>
-     <div className="main__flex">
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Main />}/>
-        <Route path="/textbook" element={<Textbook />}/>
-        <Route path="/minigames" element={<Minigames />}/>
-        <Route path="/statistics" element={<Statistics />}/>
-        <Route path="/minigames/sprint" element={<Sprintgame />}/>
-      </Routes>
-     </div>
-     <Footer/>
-     <Login/>
-     <Registration />
+      <Header />
+      <div className="main__flex">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/textbook" element={<Textbook />} />
+          <Route path="/minigames" element={<Minigames />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/minigames/sprint" element={<Sprintgame />} />
+          <Route path="/minigames/audiocall" element={<AudioCall />} />
+          <Route path="/minigames/audiocall/play" element={<AudioCallGame />} />
+          <Route path="/minigames/audiocall/end" element={<AudioCallEnd />} />
+        </Routes>
+      </div>
+      <Footer />
+      <Login />
+      <Registration />
     </div>
   );
 }
