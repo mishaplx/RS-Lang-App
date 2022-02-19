@@ -6,61 +6,66 @@ import Pagination from "./Pagination/Pagination";
 import React from "react";
 import Minigames from "../Minigames/Minigames";
 import ClipLoader from "react-spinners/ClipLoader";
+import axios from "axios";
 
 function Textbook() {
   const arrPagin = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     21, 22, 23, 24, 25, 26, 27, 28, 29,
   ];
-  const [words, setWords] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0);
-  const [groupe, setGroupe] = useState(0);
-  const [englishWordState, setEnglishWord] = useState("alcohol");
-  const [objState, setobj] = useState([]);
-  const [loginState, setLogin] = useState(false)
 
+  const [words, setWords] = useState([]);
+  const [groupe, setGroupe] = useState(0);
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [bookState, setBookState] = useState([]);
+  const [wordCard, setWordCard] = useState("alcohol");
+  const [loginState, setLogin] = useState(false)
+  
   function chechLogin(){
     localStorage.getItem(`UserName`) !== null ? setLogin(true) : setLogin(false)
     return loginState
   }
 
-  useEffect(
-    async function () {
-      setLoading(true);
-      const req = await fetch(
-        `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
-      );
-      const res = await req.json();
-      setWords(res);
-      setLoading(false);
-    },
-    [page, groupe]
-  );
+  useEffect(()=>{
+    
+    const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+    axios.get(apiUrl).then((resp) => {
+      const allPersons = resp.data;
+      setWords(allPersons);
+    });
+    console.log('render1');
+ }, [page, groupe])
 
-  useEffect(
-    async function () {
-      const req = await fetch(
-        `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
-      );
-      const res = await req.json();
-      let obj = res.filter(el => el.word === englishWordState);
-      setobj(obj);
-      setLoading(false);
-    },
-    [englishWordState]
-  );
+ 
+
+   useEffect(() => {
+    const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+    axios.get(apiUrl).then((resp) => {
+      const allPersons = resp.data;
+      let objWordCard = allPersons.filter(el => el.word === wordCard);
+      setBookState(objWordCard);
+      console.log('render2');
+      setLoading(false)
+    });
+   },[bookState]);
+
+  
   function handleClickWordItem(event) {
-    setLoading(true);
-    const englishWord = event.target.parentNode.children[0].innerHTML;
-    setEnglishWord(englishWord);
+    setLoading(true)
+    const englishWord = event.currentTarget.children[0].innerHTML;
+    setWordCard(englishWord);
   }
+
+
   function handleClick(event) {
+    setLoading(true)
     const { value } = event.target.closest(".level");
     const [groupeValue, pageValue] = value.split("-");
     setPage(pageValue);
     setGroupe(groupeValue);
   }
+
   function handleClickPag(event) {
     const numberPageinPAgination = event.target.innerHTML;
     setPage(Number(numberPageinPAgination) - 1);
@@ -113,7 +118,7 @@ function Textbook() {
           <div className="level__word">C2</div>
         </button>
       </div>
-      <div className="word">
+      <div className="word-block">
         <h3 className="word__title">Слова</h3>
         <div className="word__flex">
           <div className="word__block">
@@ -132,7 +137,7 @@ function Textbook() {
             )}
           </div>
           <div className="word__description">
-            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : objState.map(el => <WordCard el={el} chechLogin = {chechLogin} />)}
+            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : bookState.map(el => <WordCard el={el} chechLogin = {chechLogin} />)}
           </div>
         </div>
       </div>
