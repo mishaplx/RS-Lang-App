@@ -1,0 +1,145 @@
+.main {
+    margin: auto;
+}
+
+
+.sprint{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+.start-screen {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    font-size: 30px;
+}
+
+.start-screen__menu{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+}
+
+.start-screen__title {
+    text-align: center;
+    font-size: 25px;
+}
+
+.start-screen__title p {
+    text-align: center;
+    font-size: 25px;
+}
+
+.start-screen__menu_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  
+}
+
+.level-button{
+    border: 2px solid rgb(110, 245, 211);
+    border-radius: 60%;
+    padding: 5px;
+    margin: 0 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.active {
+    border: 2px solid rgb(110, 245, 211);
+    background-color: rgb(110, 245, 211) ;
+}
+
+.start-game-button{
+    font-size: 20px;
+    margin: auto;
+    width: 200px;
+    height: 50px;
+    
+}
+
+.start-game-button:hover,
+.level-button:hover,
+.answers-block button:hover,
+.score-section__buttons button:hover
+{
+    background-color: rgb(110, 245, 211);
+    transition:  0.5s;
+}
+
+.game-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.timer{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    align-content: center;
+    font-size: 40px;
+    text-align: center;
+}
+
+.timer-icon{
+    width: 50px;
+    height: 50px;
+    background-image: url('./../../assets/timer.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+}
+.first-word,
+.translate-word{
+    text-transform: capitalize;
+}
+
+.answers-block{
+    display: flex;
+    gap: 30px;
+}
+
+.answers-block button,
+.score-section__buttons button{
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    font-family: Neucha;
+    font-weight: 700;
+    margin: 10px;
+}
+
+
+.score-section{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.score-section__score{
+
+    font-size: 40px;
+    font-weight: 500;
+}
+
+
+
+
