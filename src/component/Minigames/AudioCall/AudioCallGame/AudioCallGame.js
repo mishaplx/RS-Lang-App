@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import './AudioCallGame.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { incrementWordsA } from '../../../../redux/actions'
 
 function AudioCallGame() {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const [words, setWords] = useState([])
 
@@ -38,34 +41,37 @@ function AudioCallGame() {
   }, [setLoading])
 
   function handleIsCorrect(e) {
-    setMinus(1)
+    if (end.game === false) {
+      setMinus(1)
 
-    for (let i = 0; i < 20; i++) {
-      if (e.target.textContent === words[i].wordTranslate) {
-        if (i === Number(localStorage.getItem('num'))) {
-          let correct = localStorage.getItem('correct')
-          correct = Number(correct)
-          correct++
-          setCorrect({ is: true })
-          localStorage.setItem('correct', correct)
-        } else {
-          setCorrect({ is: false })
+      for (let i = 0; i < 20; i++) {
+        if (e.target.textContent === words[i].wordTranslate) {
+          if (i === Number(localStorage.getItem('num'))) {
+            let correct = localStorage.getItem('correct')
+            correct = Number(correct)
+            correct++
+            setCorrect({ is: true })
+            dispatch(incrementWordsA())
+            localStorage.setItem('correct', correct)
+          } else {
+            setCorrect({ is: false })
+          }
+          console.log(localStorage.getItem('correct'))
         }
       }
+
+      const engWord = document.querySelector('.word')
+
+      if (engWord) engWord.style.display = 'block'
+
+      setTimeout(() => {
+        engWord.style.display = 'none'
+      }, 1500)
+      number()
+    } else {
+      console.log('Конец')
     }
-
-    const engWord = document.querySelector('.word')
-
-    if (engWord) engWord.style.display = 'block'
-
-    setTimeout(() => {
-      mix()
-      engWord.style.display = 'none'
-    }, 1500)
-    number()
-
   }
-
   const [end, setEnd] = useState({ game: false })
   const [correct, setCorrect] = useState({ is: false })
   const [minus, setMinus] = useState(0)
@@ -78,7 +84,6 @@ function AudioCallGame() {
       localStorage.setItem('num', num)
     } else {
       setEnd({ game: true })
-      // alert(`Конец\nКол-во правильных ответов: ${localStorage.getItem('correct')}`)
     }
   }
 
@@ -92,7 +97,7 @@ function AudioCallGame() {
       return orderNum
     }
   }
-
+  mix()
   function mix() {
     if (answers.length > 0) {
       for (let i = 0; i < 5; i++) {
@@ -106,24 +111,22 @@ function AudioCallGame() {
     audio.play()
   }
 
-  //!    ---Написать функцию для перемешивания ответов: order у flex-элементов---
-
   return (
     <div className='play-audiocall'>
       <div className='play-audiocall__content'>
-        {end.game ? <Link to="/minigames/audiocall/end"><h1 onClick={setTimeout(() => { setEnd({ game: false }) }, 2000)}>Завершить игру</h1></Link> : words.length > 0 ? <img src={require("../../../../assets/sound.jpg")} onClick={playAudio} alt="" /> : ''}
+        {end.game ? <Link to="/minigames/audiocall/end"><h1>Завершить игру</h1></Link> : words.length > 0 ? <img src={require("../../../../assets/sound.jpg")} onClick={playAudio} alt="" /> : ''}
 
         {end.game ? '' : words.length > 0 ? <h3 className='word'>{words[JSON.parse(localStorage.getItem('array'))[localStorage.getItem('num')] - minus].word} - {correct.is ? <span className='is'>Верно</span> : <span className='not'>Не верно</span>}</h3> : ''}
 
         {end.game ? '' : loading ? <h1>Загрузка...</h1> : <div className='words-content' onClick={handleIsCorrect}>
-          {words.length > 0 ? <h4 className='answer'>{words[JSON.parse(localStorage.getItem('array'))[localStorage.getItem('num')]].wordTranslate}</h4> : ''}
           {words.length > 0 ? <h4 className='answer'>{words[getRand(0, 20, Number(localStorage.getItem('num')))].wordTranslate}</h4> : ''}
+          {words.length > 0 ? <h4 className='answer'>{words[JSON.parse(localStorage.getItem('array'))[localStorage.getItem('num')]].wordTranslate}</h4> : ''}
           {words.length > 0 ? <h4 className='answer'>{words[getRand(0, 20, Number(localStorage.getItem('num')))].wordTranslate}</h4> : ''}
           {words.length > 0 ? <h4 className='answer'>{words[getRand(0, 20, Number(localStorage.getItem('num')))].wordTranslate}</h4> : ''}
           {words.length > 0 ? <h4 className='answer'>{words[getRand(0, 20, Number(localStorage.getItem('num')))].wordTranslate}</h4> : ''}
         </div>}
       </div>
-    </div>
+    </div >
   )
 }
 

@@ -1,3 +1,8 @@
+.audio-call {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .audio-call__content {
   display: flex;
   flex-direction: column;
