@@ -3,12 +3,18 @@ import {Link} from "react-router-dom";
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
+import { incrementWords } from './../../redux/actions';
+import {useDispatch, useSelector} from 'react-redux';
 
 
-function Sprintgame() {
+function Sprintgame(props) {
 
 
-
+const dispatch = useDispatch();
+const learnedWords = useSelector(state=>{
+  const {sprintReducer} = state;
+  return sprintReducer.words;
+})
 
 
 const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -58,15 +64,18 @@ useEffect(() => {
 
 
 const handleAnswer = (event) => {
-
+ 
+  console.log(learnedWords, )
     const target = event.target;
     let trnslWord = document.querySelector('.translate-word').textContent;
 
     if (target.className === 'true-button' && trnslWord === words[currentQuestion].wordTranslate) {
         setScore(score + 1);
+        dispatch(incrementWords());
     }
     if (target.className === 'false-button' && trnslWord !== words[currentQuestion].wordTranslate) {
         setScore(score + 1);
+
     }
 
   const nextQuestion = currentQuestion + 1;
@@ -111,7 +120,7 @@ function back(){
     setGameOver(false);
   }
 
-  
+
   return (
       <main className="main">
         <div className="sprint">
@@ -156,6 +165,7 @@ function back(){
                   <span className='first-word'>
                   {words[currentQuestion].word}</span> это <span className='translate-word'>{words[getRandomInt(0, words.length)].wordTranslate}</span>?
                 </div> } 
+                <div className='learn-words'>Выучено слов за сегодня: {learnedWords}</div>
               <div className='answers-block'>
                 <button className='true-button' onClick={handleAnswer}>Да</button>
                 <button className='false-button' onClick={handleAnswer}>Нет</button>
