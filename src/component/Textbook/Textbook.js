@@ -8,6 +8,8 @@ import Minigames from "../Minigames/Minigames";
 import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 
+
+
 function Textbook() {
   const arrPagin = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -15,13 +17,17 @@ function Textbook() {
   ];
 
   const [words, setWords] = useState([]);
-  const [groupe, setGroupe] = useState(0);
-  const [page, setPage] = useState(0);
+  const [groupe, setGroupe] = useState(localStorage.getItem('groupe'));
+  const [page, setPage] = useState(localStorage.getItem('page'));
   const [loading, setLoading] = useState(true);
   const [bookState, setBookState] = useState([]);
   const [wordCard, setWordCard] = useState("alcohol");
   const [loginState, setLogin] = useState(false)
   
+  localStorage.setItem('page', page)
+  localStorage.setItem('groupe', groupe)
+
+
   function chechLogin(){
     localStorage.getItem(`UserName`) !== null ? setLogin(true) : setLogin(false)
     return loginState
@@ -67,6 +73,7 @@ function Textbook() {
   }
 
   function handleClickPag(event) {
+    setLoading(true)
     const numberPageinPAgination = event.target.innerHTML;
     setPage(Number(numberPageinPAgination) - 1);
   }

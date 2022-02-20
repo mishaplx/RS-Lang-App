@@ -16,7 +16,7 @@ import Sprintgame from '../Sprintgame/Sprintgame';
 import AudioCall from '../Minigames/AudioCall/AudioCall';
 import AudioCallGame from '../Minigames/AudioCall/AudioCallGame/AudioCallGame';
 import AudioCallEnd from '../Minigames/AudioCall/AudioCallEnd/AudioCallEnd';
-
+import HardWord from '../HardWord/HardWord'
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
           <Route path="/minigames/audiocall" element={<AudioCall />} />
           <Route path="/minigames/audiocall/play" element={<AudioCallGame />} />
           <Route path="/minigames/audiocall/end" element={<AudioCallEnd />} />
+          <Route path="/hard-word" element={<HardWord />} />
         </Routes>
       </div>
       <Footer />

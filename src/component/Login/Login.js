@@ -20,7 +20,9 @@ function Login() {
       const content = await rawResponse.json();
       localStorage.setItem(userLog.email, content.token)
       localStorage.setItem(`UserName`, content.name)
+      localStorage.setItem('UserId', content.userId)
       window.location.reload()
+     
       uncorrectLogin.style.display = 'none'
       uncorrectPassword.style.display = 'none'
       if (loginInput.classList.contains('.uncorrect') === true) {
