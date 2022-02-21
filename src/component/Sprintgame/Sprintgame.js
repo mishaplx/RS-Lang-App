@@ -3,18 +3,29 @@ import {Link} from "react-router-dom";
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
-import { incrementWords } from './../../redux/actions';
+import { incrementWords, setRightAnswers, setBestSeries, addRightAnswer, addWrongAnswer } from './../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
+import Timer from './timer';
+import Results from './Results';
 
 
 function Sprintgame(props) {
 
 
 const dispatch = useDispatch();
+
 const learnedWords = useSelector(state=>{
   const {sprintReducer} = state;
-  return sprintReducer.words;
+  return sprintReducer.learnWords;
 })
+
+const bestSeries = useSelector(state=>{
+  const {sprintReducer} = state;
+  return sprintReducer.bestSeries;
+})
+
+
+ 
 
 
 const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,9 +33,16 @@ const [showScore, setShowScore] = useState(false);
 const [score, setScore] = useState(0);
 const [isGameStart, setGameStart ] = useState(false);
 const [isGameOver, setGameOver ] = useState(false);
-const [timeLeft, setTimeLeft] = useState(30);
+const [roundRightAnswers, setRoundRightAnswers] = useState([]);
+const [roundWrongAnswers, setRoundWrongAnswers] = useState([]);
 const [words, setWords] = useState([]);
 const [loading, setLoading] = useState(false);
+const [questionsCount, setQuestionsCount] = useState(1);
+const [trueAnswer, setTrueAnser] = useState();
+const [roundStreak, setRoundStreak] = useState(0);
+
+
+
 
 
 
@@ -47,77 +65,114 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-useEffect(() => {
-  let timer;
-  if (!isGameOver && isGameStart) {
-    timer = setTimeout(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
+function timerEnd(){
+  setShowScore(true);
+  dispatch(setRightAnswers(Math.floor((score/currentQuestion)*100)));
+  setCurrentQuestion(0);
+  checkAnswer();
+}
+
+function checkAnswer(){
+ 
+ 
+  if(trueAnswer){
+    setRoundStreak(roundStreak + 1);
+  } 
+  
+  if(!trueAnswer){
+    
+    if(roundStreak > bestSeries) {
+      dispatch(setBestSeries(roundStreak));
+    }
+    setRoundStreak(0);
   }
-  if (timeLeft === 0) {
-    setShowScore(true);
-    setCurrentQuestion(0);
-    setTimeLeft(30);
-  }
-  return () => clearTimeout(timer);
-}, [timeLeft]);
+}
 
 
 const handleAnswer = (event) => {
- 
-  console.log(learnedWords, )
     const target = event.target;
     let trnslWord = document.querySelector('.translate-word').textContent;
+    const nextQuestion = currentQuestion + 1;
+    const id = words[currentQuestion].id;
+
 
     if (target.className === 'true-button' && trnslWord === words[currentQuestion].wordTranslate) {
         setScore(score + 1);
         dispatch(incrementWords());
+        setTrueAnser(true);
+        setRoundRightAnswers([...roundRightAnswers, { word: words[currentQuestion].word, translate: words[currentQuestion].wordTranslate}]);
+        checkAnswer();
+        dispatch(addRightAnswer(id))
     }
+    
+    if (target.className === 'true-button' && trnslWord !== words[currentQuestion].wordTranslate) {
+      setTrueAnser(false);
+      checkAnswer();
+      setRoundWrongAnswers([...roundWrongAnswers, { word: words[currentQuestion].word, translate: words[currentQuestion].wordTranslate}]);
+      dispatch(addWrongAnswer(id));
+    }
+   
     if (target.className === 'false-button' && trnslWord !== words[currentQuestion].wordTranslate) {
         setScore(score + 1);
-
+        setTrueAnser(true);
+        checkAnswer();
+        setRoundRightAnswers([...roundRightAnswers, { word: words[currentQuestion].word, translate: words[currentQuestion].wordTranslate}]);
+        dispatch(addRightAnswer(id));
     }
 
-  const nextQuestion = currentQuestion + 1;
+    if (target.className === 'false-button' && trnslWord == words[currentQuestion].wordTranslate) {
+      setTrueAnser(false);
+      checkAnswer();
+      setRoundWrongAnswers([...roundWrongAnswers, { word: words[currentQuestion].word, translate: words[currentQuestion].wordTranslate}]);
+      dispatch(addWrongAnswer(id));
+    }
+   
 
-  if (nextQuestion < words.length) {
+  if (nextQuestion < words.length && !showScore) {
     setCurrentQuestion(nextQuestion);
+    setQuestionsCount(questionsCount + 1)
+
+  
     } else {
     setShowScore(true);
+    dispatch(setRightAnswers(Math.floor((score/currentQuestion)*100)));
     setCurrentQuestion(0);
+    checkAnswer();
     } 
   };
 
+
   const chooseLevel = (event)=>{
-  const target = event.target;
-  const allTargets = document.querySelectorAll('.active');
+    const target = event.target;
+    const allTargets = document.querySelectorAll('.active');
 
   allTargets.forEach(el =>{
     el.classList.remove('active')
   })
 
-  if(target.className != 'active'){ 
+  if(target.className !== 'active'){ 
     target.classList.toggle('active')
     group = target.dataset.id;
-    console.log(group);
   }
-  
-  
-
 }
+
+
 let group = 1;
 
 function startGame(){
   setGameStart(true);
   setGameOver(false);
   setScore(0);
-  getWords(group, getRandomInt(0, 30))
+  getWords(group, getRandomInt(0, 30));
+  
 }
 
 function back(){
     setShowScore(false);
     setGameStart(false);
     setGameOver(false);
+    setRoundRightAnswers([]);
+    setRoundWrongAnswers([]);
   }
 
 
@@ -150,26 +205,37 @@ function back(){
               {showScore && (
                 <div className='score-section'>
                     <div className='score-section__score'>
-                    Вы угадали {score} слов!
+                      Вы угадали {score} слов(а)!
                     </div>
+                    <Results score = {score} back={back} wrongWords = {roundWrongAnswers} rightWords = {roundRightAnswers} />
                     <div className='score-section__buttons'>
                     <button onClick = {back}>Назад</button>
                     <button onClick = {back} ><Link to="/">На главную</Link></button>
                     </div>
                 </div>
               )}
+             
               {!showScore &&(
               <div className='game-wrapper'>
-                <div className='timer'><span className='timer-icon'></span>{timeLeft}</div>
-                {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : <div className='question-block'>
-                  <span className='first-word'>
+                 
+                {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : 
+           
+                <div className='question-block'>
+                    <Timer isGameStart = {isGameStart} showScore = {showScore} timerEnd = {timerEnd} />
+                 <span className='first-word'>
                   {words[currentQuestion].word}</span> это <span className='translate-word'>{words[getRandomInt(0, words.length)].wordTranslate}</span>?
-                </div> } 
-                <div className='learn-words'>Выучено слов за сегодня: {learnedWords}</div>
+                
+                  <div className='show-answer'>
+                    <span className='answer-icon'></span>
+                    {roundRightAnswers.length}
+                  </div>
+                </div>  
+                }
               <div className='answers-block'>
                 <button className='true-button' onClick={handleAnswer}>Да</button>
                 <button className='false-button' onClick={handleAnswer}>Нет</button>
-              </div>
+              </div> 
+              
             </div>)}
           </div> 
           )}     
