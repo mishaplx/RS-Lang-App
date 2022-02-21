@@ -1,24 +1,19 @@
-<<<<<<< HEAD
 import { ADD_WORD, SET_RIGHT_ANSWERS, SET_BEST_SERIES, ADD_RIGHT_ANSWER, ADD_WRONG_ANSWER } from "./types";
-
-export function incrementWords (){
-=======
-import { ADD_WORD } from "./types";
 import { ADD_WORD_COUNT } from "./types";
 import { ANSWERED_COUNT } from "./types";
 import { ANSWERED_CORRECT } from "./types";
 import { ADD_HARD_WORD } from "./types";
 
+
+
 export function incrementWords() {
 
 
->>>>>>> 2fdc4fb66dd2ab938b374e242d3342d56e949b94
     return {
         type: ADD_WORD
     }
 }
 
-<<<<<<< HEAD
 
 export function setRightAnswers (value){
     return {
@@ -42,7 +37,9 @@ export function addRightAnswer (id){
 export function addWrongAnswer (id){
     return {
         type: ADD_WRONG_ANSWER, id: id
-=======
+    }
+}
+
 export function incrementWordsA() {
     return {
         type: ADD_WORD_COUNT
@@ -67,6 +64,5 @@ export function addHardWord(wordEnglish, wordTranslate) {
             wordEnglish,
             wordTranslate
         }
->>>>>>> 2fdc4fb66dd2ab938b374e242d3342d56e949b94
     }
 }

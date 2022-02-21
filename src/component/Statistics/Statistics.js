@@ -1,9 +1,11 @@
-<<<<<<< HEAD
+import { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
 import './Statistics.css';
 
 
-function Statistic(props) {
+
+
+function Statistics(props) {
   
   const sprintLearnedWords = useSelector(state=>{
     const {sprintReducer} = state;
@@ -20,20 +22,6 @@ function Statistic(props) {
   })
 
 
-  
-  
-
-=======
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import './Statistics.css'
-
-function Statistic(props) {
-
-  const sprintLearnedWords = useSelector(state => {
-    const { sprintReducer } = state;
-    return sprintReducer.words;
-  })
   const [loading, setLoading] = useState()
   const getStatistic = async () => {
     setLoading(true)
@@ -52,7 +40,6 @@ function Statistic(props) {
   useEffect(() => {
     getStatistic()
   }, [setLoading])
->>>>>>> 2fdc4fb66dd2ab938b374e242d3342d56e949b94
   return (
     < main className="main" >
       <div className="today-statistic">
@@ -69,14 +56,11 @@ function Statistic(props) {
         </div>
       </div>
 
-<<<<<<< HEAD
         <div className="games-statistics">
           <h2>Статистика игр</h2>
           <div  className="games-statistics__container">
-=======
           <div className="games-statistics">
             <h2>Статистика игр</h2>
->>>>>>> 2fdc4fb66dd2ab938b374e242d3342d56e949b94
             <div className="sprint-statisic">
               <h3>Спринт</h3>
               <p>Изучено слов : {sprintLearnedWords}</p>
@@ -92,15 +76,9 @@ function Statistic(props) {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-       
-=======
-
-
       </div>
->>>>>>> 2fdc4fb66dd2ab938b374e242d3342d56e949b94
     </main>
   );
 }
 
-export default Statistic;
+export default Statistics;
