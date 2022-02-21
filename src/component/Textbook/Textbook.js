@@ -16,6 +16,10 @@ function Textbook() {
     21, 22, 23, 24, 25, 26, 27, 28, 29,
   ];
 
+  if(localStorage.getItem("groupe") == null || localStorage.getItem("page") == null){
+    localStorage.setItem('groupe',0)
+    localStorage.setItem('page',0)
+  }
   const [words, setWords] = useState([]);
   const [groupe, setGroupe] = useState(localStorage.getItem('groupe'));
   const [page, setPage] = useState(localStorage.getItem('page'));
