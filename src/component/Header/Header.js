@@ -22,7 +22,7 @@ function Header() {
   }
   return (
     <header className="header">
-      <Link to="/">
+      <Link to="/RS-Lang-App">
       <h1>RS Lang</h1>
       </Link>
       <div className="block__login">

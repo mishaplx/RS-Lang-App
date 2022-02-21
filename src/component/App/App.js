@@ -25,7 +25,7 @@ function App() {
       <div className="main__flex">
         <Navigation />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/RS-Lang-App" element={<Main />} />
           <Route path="/textbook" element={<Textbook />} />
           <Route path="/minigames" element={<Minigames />} />
           <Route path="/statistics" element={<Statistics />} />
