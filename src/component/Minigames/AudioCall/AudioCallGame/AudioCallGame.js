@@ -147,9 +147,9 @@ function AudioCallGame() {
   const setStatistic = async (learnedWords) => {
     // console.log(`correct: ${answeredCorrect}`)
     // console.log(`count: ${answeredCount}`)
-    console.log(((Number(answeredCorrect) / Number(answeredCount)) * 100))
-    console.log(Number(localStorage.getItem('correctPercent')))
-    console.log((Number(answeredCount) === 0 ? 0 : ((Number(answeredCorrect) / Number(answeredCount)) * 100)) + Number(localStorage.getItem('correctPercent')) / 2)
+    // console.log(((Number(answeredCorrect) / Number(answeredCount)) * 100))
+    // console.log(Number(localStorage.getItem('correctPercent')))
+    // console.log((Number(answeredCount) === 0 ? 0 : ((Number(answeredCorrect) / Number(answeredCount)) * 100)) + Number(localStorage.getItem('correctPercent')) / 2)
     const statistics = {
       "learnedWords": Number(localStorage.getItem('learnedWords')) + Number(learnedWords),
       "optional": {
