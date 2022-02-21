@@ -1,7 +1,7 @@
 import { ADD_WORD_COUNT } from "./types";
 
 const initialState = {
-  words: 0
+  words: 1
 }
 
 export const audioCallReducer = (state = initialState, action) => {
