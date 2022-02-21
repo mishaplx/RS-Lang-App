@@ -27,7 +27,8 @@ function Textbook() {
   const [bookState, setBookState] = useState([]);
   const [wordCard, setWordCard] = useState("alcohol");
   const [loginState, setLogin] = useState(false)
-  
+  //const [wordId, setWordId] = useState('5e9f5ee35eb9e72bc21af4a0')
+  //const wordId = '5e9f5ee35eb9e72bc21af4a0'
   localStorage.setItem('page', page)
   localStorage.setItem('groupe', groupe)
 
@@ -43,11 +44,19 @@ function Textbook() {
     axios.get(apiUrl).then((resp) => {
       const allPersons = resp.data;
       setWords(allPersons);
+      
     });
     console.log('render1');
  }, [page, groupe])
 
- 
+//  const getWordId = async ()=>{
+//   const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+//   axios.get(apiUrl).then((resp) => {
+//     const allPersons = resp.data;
+//     let objFilterId = allPersons.filter(el => el.word === document.querySelector('.word__card-word'));
+
+//   });
+//  }
 
    useEffect(() => {
     const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
@@ -55,20 +64,47 @@ function Textbook() {
       const allPersons = resp.data;
       let objWordCard = allPersons.filter(el => el.word === wordCard);
       setBookState(objWordCard);
-      //console.log('render2');
+      
       setLoading(false)
     });
-   },[bookState]);
+   },[bookState, groupe, page, wordCard]);
 
   
   function handleClickWordItem(event) {
+   // getWordId()
+    
     setLoading(true)
     const englishWord = event.currentTarget.children[0].innerHTML;
     setWordCard(englishWord);
+    
   }
 
+  // const GetAllUserWords = async () => {
 
+  //   const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/words`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //    const res = await response.json()
+  //    console.log(res)
+  // }
+  // const CreateuserWord = async () => {
+
+  //   const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/words/${wordId}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //    const res = await response.json()
+  //    console.log(res)
+  // }
   function handleClick(event) {
+    //GetAllUserWords()
     setLoading(true)
     const { value } = event.target.closest(".level");
     const [groupeValue, pageValue] = value.split("-");
@@ -148,7 +184,7 @@ function Textbook() {
             )}
           </div>
           <div className="word__description">
-            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : bookState.map(el => <WordCard el={el} chechLogin = {chechLogin} />)}
+            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : bookState.map(el => <WordCard el={el} chechLogin = {chechLogin}  />)}
           </div>
         </div>
       </div>
