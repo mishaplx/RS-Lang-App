@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
-
+import './Statistics.css'
 
 function Statistic(props) {
 
@@ -8,14 +8,26 @@ function Statistic(props) {
     const { sprintReducer } = state;
     return sprintReducer.words;
   })
-  const audioCallLearnedWords = useSelector(state => {
-    const { audioCallReducer } = state;
-    return audioCallReducer.words;
-  })
-
+  const [loading, setLoading] = useState()
+  const getStatistic = async () => {
+    setLoading(true)
+    const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const res = await response.json()
+    localStorage.setItem('learnedWords', res.learnedWords)
+    localStorage.setItem('correctPercent', res.optional["correctPercent"])
+    setLoading(false)
+  }
+  useEffect(() => {
+    getStatistic()
+  }, [setLoading])
   return (
-
-    <main className="main">
+    < main className="main" >
       <div className="today-statistic">
         <h2> Статистика за сегодня</h2>
         <div className="total-statistics">
@@ -39,8 +51,8 @@ function Statistic(props) {
 
             <div className="audio-call-statisic">
               <h3>Аудиовызов</h3>
-              <p>Изучено слов : {audioCallLearnedWords}</p>
-              <p>Правильных ответов (%) : 0</p>
+              <p>Изучено слов : {loading ? 'загрузка...' : (localStorage.getItem('learnedWords') ? localStorage.getItem('learnedWords') : <span id="only-auth">(Только для авторизованных пользователей)</span>)}</p>
+              <p>Правильных ответов (%) : {loading ? 'загрузка...' : (localStorage.getItem('correctPercent') ? localStorage.getItem('correctPercent') : <span id="only-auth">(Только для авторизованных пользователей)</span>)}</p>
               <p>Лучшая серия : 0</p>
             </div>
           </div>
