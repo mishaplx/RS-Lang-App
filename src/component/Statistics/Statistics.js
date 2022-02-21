@@ -59,13 +59,11 @@ function Statistics(props) {
         <div className="games-statistics">
           <h2>Статистика игр</h2>
           <div  className="games-statistics__container">
-          <div className="games-statistics">
-            <h2>Статистика игр</h2>
             <div className="sprint-statisic">
               <h3>Спринт</h3>
-              <p>Изучено слов : {sprintLearnedWords}</p>
-              <p>Правильных ответов (%) : {rightAnswers}</p>
-              <p>Лучшая серия : {bestSeries}</p>
+              <p>Изучено слов : {localStorage.getItem('token') ? (loading ? 'загрузка...' : {sprintLearnedWords}) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+              <p>Правильных ответов (%) : {localStorage.getItem('token') ? (loading ? 'загрузка...' : {rightAnswers}) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+              <p>Лучшая серия : {localStorage.getItem('token') ? (loading ? 'загрузка...' : {bestSeries}) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
             </div>
 
             <div className="audio-call-statisic">
@@ -76,7 +74,7 @@ function Statistics(props) {
             </div>
           </div>
         </div>
-      </div>
+      
     </main>
   );
 }
