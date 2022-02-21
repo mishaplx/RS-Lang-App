@@ -1,7 +1,9 @@
 nav {
-  width: 200px;
+  width: 250px;
   background-color: rgb(110, 245, 211);
   transition: 0.5s;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 ul {
   list-style: none;
@@ -9,7 +11,7 @@ ul {
 ul li {
   cursor: pointer;
   margin: 10px;
-  padding: 5px;
+  text-align: center;
 }
 .nav__name {
   display: flex;
@@ -17,10 +19,6 @@ ul li {
 }
 .nav__icon {
   margin-right: 10px;
-}
-.title_nav {
-  opacity: 1;
-  transition: 0.5s;
 }
 .hide {
   opacity: 0;
@@ -38,16 +36,37 @@ ul li {
 .menuImg {
   transform: rotate(1turn);
 }
+.nav-info {
+  font-size: 15px;
+  text-align: center;
+}
 @media (max-width: 500px) {
   .nav {
+    overflow: hidden;
     width: 50px;
   }
   .nav__name {
     display: flex;
     flex-direction: column;
   }
+  .nav__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+  }
   .title_nav {
+    opacity: 1;
+    transition: 0.5s;
     font-size: 12px;
+    text-align: center;
+    margin: 0;
+    display: none;
+  }
+  .nav-info {
+    padding: 0 3px;
+    font-size: 6px;
+    text-align: center;
   }
 }
 @keyframes animate {

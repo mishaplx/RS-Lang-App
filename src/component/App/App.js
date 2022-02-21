@@ -13,25 +13,32 @@ import {
   Route
 } from "react-router-dom";
 import Sprintgame from '../Sprintgame/Sprintgame';
-
+import AudioCall from '../Minigames/AudioCall/AudioCall';
+import AudioCallGame from '../Minigames/AudioCall/AudioCallGame/AudioCallGame';
+import AudioCallEnd from '../Minigames/AudioCall/AudioCallEnd/AudioCallEnd';
+import HardWord from '../HardWord/HardWord'
 
 function App() {
   return (
     <div className="app">
-     <Header/>
-     <div className="main__flex">
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Main />}/>
-        <Route path="/textbook" element={<Textbook />}/>
-        <Route path="/minigames" element={<Minigames />}/>
-        <Route path="/statistics" element={<Statistics />}/>
-        <Route path="/minigames/sprint" element={<Sprintgame />}/>
-      </Routes>
-     </div>
-     <Footer/>
-     <Login/>
-     <Registration />
+      <Header />
+      <div className="main__flex">
+        <Navigation />
+        <Routes>
+          <Route path="/RS-Lang-App/" element={<Main />} />
+          <Route path="/RS-Lang-App/textbook" element={<Textbook />} />
+          <Route path="/RS-Lang-App/minigames" element={<Minigames />} />
+          <Route path="/RS-Lang-App/statistics" element={<Statistics />} />
+          <Route path="/RS-Lang-App/minigames/sprint" element={<Sprintgame />} />
+          <Route path="/RS-Lang-App/minigames/audiocall" element={<AudioCall />} />
+          <Route path="/RS-Lang-App/minigames/audiocall/play" element={<AudioCallGame />} />
+          <Route path="/RS-Lang-App/minigames/audiocall/end" element={<AudioCallEnd />} />
+          <Route path="/RS-Lang-App/hard-word" element={<HardWord />} />
+        </Routes>
+      </div>
+      <Footer />
+      <Login />
+      <Registration />
     </div>
   );
 }

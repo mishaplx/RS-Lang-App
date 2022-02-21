@@ -210,7 +210,7 @@ function back(){
                     <Results score = {score} back={back} wrongWords = {roundWrongAnswers} rightWords = {roundRightAnswers} />
                     <div className='score-section__buttons'>
                     <button onClick = {back}>Назад</button>
-                    <button onClick = {back} ><Link to="/">На главную</Link></button>
+                    <button onClick = {back} ><Link to="/RS-Lang-App">На главную</Link></button>
                     </div>
                 </div>
               )}

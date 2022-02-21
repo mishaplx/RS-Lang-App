@@ -6,62 +6,114 @@ import Pagination from "./Pagination/Pagination";
 import React from "react";
 import Minigames from "../Minigames/Minigames";
 import ClipLoader from "react-spinners/ClipLoader";
+import axios from "axios";
+
+
 
 function Textbook() {
   const arrPagin = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     21, 22, 23, 24, 25, 26, 27, 28, 29,
   ];
+
+  if(localStorage.getItem("groupe") == null || localStorage.getItem("page") == null){
+    localStorage.setItem('groupe',0)
+    localStorage.setItem('page',0)
+  }
   const [words, setWords] = useState([]);
+  const [groupe, setGroupe] = useState(localStorage.getItem('groupe'));
+  const [page, setPage] = useState(localStorage.getItem('page'));
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0);
-  const [groupe, setGroupe] = useState(0);
-  const [englishWordState, setEnglishWord] = useState("alcohol");
-  const [objState, setobj] = useState([]);
+  const [bookState, setBookState] = useState([]);
+  const [wordCard, setWordCard] = useState("alcohol");
   const [loginState, setLogin] = useState(false)
+  //const [wordId, setWordId] = useState('5e9f5ee35eb9e72bc21af4a0')
+  //const wordId = '5e9f5ee35eb9e72bc21af4a0'
+  localStorage.setItem('page', page)
+  localStorage.setItem('groupe', groupe)
+
 
   function chechLogin(){
     localStorage.getItem(`UserName`) !== null ? setLogin(true) : setLogin(false)
     return loginState
   }
 
-  useEffect(
-    async function () {
-      setLoading(true);
-      const req = await fetch(
-        `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
-      );
-      const res = await req.json();
-      setWords(res);
-      setLoading(false);
-    },
-    [page, groupe]
-  );
+  useEffect(()=>{
+    
+    const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+    axios.get(apiUrl).then((resp) => {
+      const allPersons = resp.data;
+      setWords(allPersons);
+      
+    });
+    console.log('render1');
+ }, [page, groupe])
 
-  useEffect(
-    async function () {
-      const req = await fetch(
-        `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
-      );
-      const res = await req.json();
-      let obj = res.filter(el => el.word === englishWordState);
-      setobj(obj);
-      setLoading(false);
-    },
-    [englishWordState]
-  );
+//  const getWordId = async ()=>{
+//   const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+//   axios.get(apiUrl).then((resp) => {
+//     const allPersons = resp.data;
+//     let objFilterId = allPersons.filter(el => el.word === document.querySelector('.word__card-word'));
+
+//   });
+//  }
+
+   useEffect(() => {
+    const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
+    axios.get(apiUrl).then((resp) => {
+      const allPersons = resp.data;
+      let objWordCard = allPersons.filter(el => el.word === wordCard);
+      setBookState(objWordCard);
+      
+      setLoading(false)
+    });
+   },[bookState, groupe, page, wordCard]);
+
+  
   function handleClickWordItem(event) {
-    setLoading(true);
-    const englishWord = event.target.parentNode.children[0].innerHTML;
-    setEnglishWord(englishWord);
+   // getWordId()
+    
+    setLoading(true)
+    const englishWord = event.currentTarget.children[0].innerHTML;
+    setWordCard(englishWord);
+    
   }
+
+  // const GetAllUserWords = async () => {
+
+  //   const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/words`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //    const res = await response.json()
+  //    console.log(res)
+  // }
+  // const CreateuserWord = async () => {
+
+  //   const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/words/${wordId}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //    const res = await response.json()
+  //    console.log(res)
+  // }
   function handleClick(event) {
+    //GetAllUserWords()
+    setLoading(true)
     const { value } = event.target.closest(".level");
     const [groupeValue, pageValue] = value.split("-");
     setPage(pageValue);
     setGroupe(groupeValue);
   }
+
   function handleClickPag(event) {
+    setLoading(true)
     const numberPageinPAgination = event.target.innerHTML;
     setPage(Number(numberPageinPAgination) - 1);
   }
@@ -113,7 +165,7 @@ function Textbook() {
           <div className="level__word">C2</div>
         </button>
       </div>
-      <div className="word">
+      <div className="word-block">
         <h3 className="word__title">Слова</h3>
         <div className="word__flex">
           <div className="word__block">
@@ -132,7 +184,7 @@ function Textbook() {
             )}
           </div>
           <div className="word__description">
-            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : objState.map(el => <WordCard el={el} chechLogin = {chechLogin} />)}
+            {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : bookState.map(el => <WordCard el={el} chechLogin = {chechLogin}  />)}
           </div>
         </div>
       </div>

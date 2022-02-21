@@ -38,3 +38,12 @@
     column-gap: 30px;
     justify-content: space-between;
 }
+#only-auth {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.games-statistics {
+  margin-top: 40px;
+}
