@@ -25,15 +25,15 @@ function App() {
       <div className="main__flex">
         <Navigation />
         <Routes>
-          <Route path="/RS-Lang-App" element={<Main />} />
-          <Route path="/textbook" element={<Textbook />} />
-          <Route path="/minigames" element={<Minigames />} />
-          <Route path="/statistics" element={<Statistics />} />
-          <Route path="/minigames/sprint" element={<Sprintgame />} />
-          <Route path="/minigames/audiocall" element={<AudioCall />} />
-          <Route path="/minigames/audiocall/play" element={<AudioCallGame />} />
-          <Route path="/minigames/audiocall/end" element={<AudioCallEnd />} />
-          <Route path="/hard-word" element={<HardWord />} />
+          <Route path="/RS-Lang-App/main" element={<Main />} />
+          <Route path="/RS-Lang-App/textbook" element={<Textbook />} />
+          <Route path="/RS-Lang-App/minigames" element={<Minigames />} />
+          <Route path="/RS-Lang-App/statistics" element={<Statistics />} />
+          <Route path="/RS-Lang-App/minigames/sprint" element={<Sprintgame />} />
+          <Route path="/RS-Lang-App/minigames/audiocall" element={<AudioCall />} />
+          <Route path="/RS-Lang-App/minigames/audiocall/play" element={<AudioCallGame />} />
+          <Route path="/RS-Lang-App/minigames/audiocall/end" element={<AudioCallEnd />} />
+          <Route path="/RS-Lang-App/hard-word" element={<HardWord />} />
         </Routes>
       </div>
       <Footer />

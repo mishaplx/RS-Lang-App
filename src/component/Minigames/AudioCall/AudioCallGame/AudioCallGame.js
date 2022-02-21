@@ -114,7 +114,7 @@ function AudioCallGame() {
   return (
     <div className='play-audiocall'>
       <div className='play-audiocall__content'>
-        {end.game ? <Link to="/minigames/audiocall/end"><h1>Завершить игру</h1></Link> : words.length > 0 ? <img src={require("../../../../assets/sound.jpg")} onClick={playAudio} alt="" /> : ''}
+        {end.game ? <Link to="/RS-Lang-App/minigames/audiocall/end"><h1>Завершить игру</h1></Link> : words.length > 0 ? <img src={require("../../../../assets/sound.jpg")} onClick={playAudio} alt="" /> : ''}
 
         {end.game ? '' : words.length > 0 ? <h3 className='word'>{words[JSON.parse(localStorage.getItem('array'))[localStorage.getItem('num')] - minus].word} - {correct.is ? <span className='is'>Верно</span> : <span className='not'>Не верно</span>}</h3> : ''}
 

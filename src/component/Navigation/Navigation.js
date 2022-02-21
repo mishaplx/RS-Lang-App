@@ -31,7 +31,7 @@ function Navigation() {
     <nav className="nav">
       <ul>
         <li>
-          <Link to="/RS-Lang-App" className="nav__name">
+          <Link to="/RS-Lang-App/main" className="nav__name">
             <span className="nav__icon" onClick={handleClick}>
               <img src={imgMenu} className="menuImg" width="20px" alt="menu" />
             </span>
@@ -39,7 +39,7 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/textbook" className="nav__name">
+          <Link to="/RS-Lang-App/textbook" className="nav__name">
             <span className="nav__icon">
               <img src={imgBook} width="20px" alt="menu" />
             </span>
@@ -47,7 +47,7 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/minigames" className="nav__name">
+          <Link to="/RS-Lang-App/minigames" className="nav__name">
             <span className="nav__icon">
               <img src={imgGame} width="20px" alt="menu" />
             </span>
@@ -55,7 +55,7 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/statistics" className="nav__name">
+          <Link to="/RS-Lang-App/statistics" className="nav__name">
             <span className="nav__icon">
               <img src={imgStat} width="20px" alt="menu" />
             </span>
@@ -64,7 +64,7 @@ function Navigation() {
         </li>
         {loginState ? (
   <li>
-  <Link to="/hard-word" className="nav__name">
+  <Link to="/RS-Lang-App/hard-word" className="nav__name">
     <span className="nav__icon">
       <img src={imgStat} width="20px" alt="menu" />
     </span>

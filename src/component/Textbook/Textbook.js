@@ -55,7 +55,7 @@ function Textbook() {
       const allPersons = resp.data;
       let objWordCard = allPersons.filter(el => el.word === wordCard);
       setBookState(objWordCard);
-      console.log('render2');
+      //console.log('render2');
       setLoading(false)
     });
    },[bookState]);
