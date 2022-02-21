@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/RS-Lang-App/static/css/main.34e61792.css",
-    "main.js": "/RS-Lang-App/static/js/main.a3d3c3c7.js",
+    "main.css": "/RS-Lang-App/static/css/main.46f58968.css",
+    "main.js": "/RS-Lang-App/static/js/main.a4f25a80.js",
     "static/js/787.28cb0dcd.chunk.js": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js",
     "static/media/overview.jpg": "/RS-Lang-App/static/media/overview.47948e8d45aca3a88983.jpg",
     "static/media/misha.jpg": "/RS-Lang-App/static/media/misha.320dee3a363fb9fe5ddc.jpg",
@@ -19,12 +19,12 @@
     "static/media/audioSvg.svg": "/RS-Lang-App/static/media/audioSvg.12f7bb1530eb192efd137958cdea6c24.svg",
     "static/media/book.svg": "/RS-Lang-App/static/media/book.600ff157aa72b0acbb5e4cb23cd9fc6c.svg",
     "static/media/log-out-outline.svg": "/RS-Lang-App/static/media/log-out-outline.316dd325ee26da2ef13734bd761092da.svg",
-    "main.34e61792.css.map": "/RS-Lang-App/static/css/main.34e61792.css.map",
-    "main.a3d3c3c7.js.map": "/RS-Lang-App/static/js/main.a3d3c3c7.js.map",
+    "main.46f58968.css.map": "/RS-Lang-App/static/css/main.46f58968.css.map",
+    "main.a4f25a80.js.map": "/RS-Lang-App/static/js/main.a4f25a80.js.map",
     "787.28cb0dcd.chunk.js.map": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.34e61792.css",
-    "static/js/main.a3d3c3c7.js"
+    "static/css/main.46f58968.css",
+    "static/js/main.a4f25a80.js"
   ]
 }
