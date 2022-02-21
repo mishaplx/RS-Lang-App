@@ -2,10 +2,22 @@ import { useEffect, useState } from 'react'
 import './AudioCallGame.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { incrementWordsA } from '../../../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { incrementAnswered, incrementAnsweredCorrect, incrementWordsA } from '../../../../redux/actions'
 
 function AudioCallGame() {
+  const audioCallLearnedWords = useSelector(state => {
+    const { audioCallReducer } = state;
+    return audioCallReducer.words;
+  })
+  const answeredCount = useSelector(state => {
+    const { answeredReducer } = state
+    return answeredReducer.count
+  })
+  const answeredCorrect = useSelector(state => {
+    const { answeredCorrectReducer } = state
+    return answeredCorrectReducer.correct
+  })
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const [words, setWords] = useState([])
@@ -43,20 +55,23 @@ function AudioCallGame() {
   function handleIsCorrect(e) {
     if (end.game === false) {
       setMinus(1)
-
+      getStatistic()
       for (let i = 0; i < 20; i++) {
         if (e.target.textContent === words[i].wordTranslate) {
+          dispatch(incrementAnswered())
           if (i === Number(localStorage.getItem('num'))) {
             let correct = localStorage.getItem('correct')
             correct = Number(correct)
             correct++
             setCorrect({ is: true })
             dispatch(incrementWordsA())
+            dispatch(incrementAnsweredCorrect())
             localStorage.setItem('correct', correct)
+
           } else {
             setCorrect({ is: false })
           }
-          console.log(localStorage.getItem('correct'))
+          setStatistic(audioCallLearnedWords)
         }
       }
 
@@ -106,11 +121,57 @@ function AudioCallGame() {
     }
   }
 
+  //   async function getNewToken() {
+  //     const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/tokens`), {
+  //       method: 'GET',
+  //       headers: {
+  //         'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  //           'Accept': 'application/json',
+  //             'Content-Type': 'application/json',
+  //       },
+  // }
+  //   }
+
+  const getStatistic = async () => {
+    const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const res = await response.json()
+    console.log(res)
+  }
+
+  const setStatistic = async (learnedWords) => {
+    // console.log(`correct: ${answeredCorrect}`)
+    // console.log(`count: ${answeredCount}`)
+    console.log(((Number(answeredCorrect) / Number(answeredCount)) * 100))
+    console.log(Number(localStorage.getItem('correctPercent')))
+    console.log((Number(answeredCount) === 0 ? 0 : ((Number(answeredCorrect) / Number(answeredCount)) * 100)) + Number(localStorage.getItem('correctPercent')) / 2)
+    const statistics = {
+      "learnedWords": Number(localStorage.getItem('learnedWords')) + Number(learnedWords),
+      "optional": {
+        "correctPercent": `${(((Number(answeredCount) === 0 ? 0 : ((Number(answeredCorrect) / Number(answeredCount)) * 100)) + (Number(localStorage.getItem('correctPercent')))) / 2).toFixed(2)}`
+      }
+    }
+    const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(statistics)
+    });
+    // const res = await response.json()
+    // console.log(res)
+  }
+
   function playAudio() {
     const audio = new Audio(`https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${words[JSON.parse(localStorage.getItem('array'))[localStorage.getItem('num')]].audio}`)
     audio.play()
   }
-
   return (
     <div className='play-audiocall'>
       <div className='play-audiocall__content'>
