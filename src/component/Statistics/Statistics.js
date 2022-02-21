@@ -51,8 +51,8 @@ function Statistic(props) {
 
             <div className="audio-call-statisic">
               <h3>Аудиовызов</h3>
-              <p>Изучено слов : {loading ? 'загрузка...' : (localStorage.getItem('learnedWords') ? localStorage.getItem('learnedWords') : <span id="only-auth">(Только для авторизованных пользователей)</span>)}</p>
-              <p>Правильных ответов (%) : {loading ? 'загрузка...' : (localStorage.getItem('correctPercent') ? localStorage.getItem('correctPercent') : <span id="only-auth">(Только для авторизованных пользователей)</span>)}</p>
+              <p>Изучено слов : {localStorage.getItem('token') ? (loading ? 'загрузка...' : localStorage.getItem('learnedWords')) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+              <p>Правильных ответов (%) : {localStorage.getItem('token') ? (loading ? 'загрузка...' : localStorage.getItem('correctPercent')) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
               <p>Лучшая серия : 0</p>
             </div>
           </div>
