@@ -36,26 +36,38 @@ ul li {
 .menuImg {
   transform: rotate(1turn);
 }
+.nav-info {
+  font-size: 15px;
+  text-align: center;
+}
 @media (max-width: 500px) {
   .nav {
+    overflow: hidden;
     width: 50px;
   }
   .nav__name {
     display: flex;
     flex-direction: column;
   }
+  .nav__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+  }
   .title_nav {
     opacity: 1;
     transition: 0.5s;
     font-size: 12px;
     text-align: center;
-
     margin: 0;
+    display: none;
   }
-}
-.nav-info{
-  font-size: 15px;
-  text-align: center;
+  .nav-info {
+    padding: 0 3px;
+    font-size: 6px;
+    text-align: center;
+  }
 }
 @keyframes animate {
   from {
