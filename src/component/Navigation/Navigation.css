@@ -1,7 +1,9 @@
 nav {
-  width: 200px;
+  width: 250px;
   background-color: rgb(110, 245, 211);
   transition: 0.5s;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 ul {
   list-style: none;
@@ -9,7 +11,7 @@ ul {
 ul li {
   cursor: pointer;
   margin: 10px;
-  padding: 5px;
+  text-align: center;
 }
 .nav__name {
   display: flex;
@@ -17,10 +19,6 @@ ul li {
 }
 .nav__icon {
   margin-right: 10px;
-}
-.title_nav {
-  opacity: 1;
-  transition: 0.5s;
 }
 .hide {
   opacity: 0;
@@ -47,8 +45,17 @@ ul li {
     flex-direction: column;
   }
   .title_nav {
+    opacity: 1;
+    transition: 0.5s;
     font-size: 12px;
+    text-align: center;
+
+    margin: 0;
   }
+}
+.nav-info{
+  font-size: 15px;
+  text-align: center;
 }
 @keyframes animate {
   from {

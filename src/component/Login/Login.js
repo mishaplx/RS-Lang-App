@@ -36,6 +36,9 @@ function Login() {
       localStorage.setItem('userId', content.userId)
       window.location.reload()
       getStatistic()
+      localStorage.setItem(userLog.email, content.token)
+      window.location.reload()
+
       uncorrectLogin.style.display = 'none'
       uncorrectPassword.style.display = 'none'
       if (loginInput.classList.contains('.uncorrect') === true) {

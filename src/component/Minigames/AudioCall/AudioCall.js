@@ -37,32 +37,32 @@ function AudioCall() {
           <div className='levels-content'>
             <h4>Выбери уровень сложности</h4>
             <section className='select-levels__content' onClick={groupWords}>
-              <Link to="/minigames/audiocall/play">
+              <Link to="/RS-Lang-App/minigames/audiocall/play">
                 <section className='btn-play'>
                   <h5>А1</h5>
                 </section>
               </Link>
-              <Link to="/minigames/audiocall/play">
+              <Link to="/RS-Lang-App/minigames/audiocall/play">
                 <section className='btn-play'>
                   <h5>А2</h5>
                 </section>
               </Link>
-              <Link to="/minigames/audiocall/play">
+              <Link to="/RS-Lang-App/minigames/audiocall/play">
                 <section className='btn-play'>
                   <h5>B1</h5>
                 </section>
               </Link>
-              <Link to="/minigames/audiocall/play">
+              <Link to="/RS-Lang-App/minigames/audiocall/play">
                 <section className='btn-play'>
                   <h5>B2</h5>
                 </section>
               </Link>
-              <Link to="/minigames/audiocall/play">
+              <Link to="/RS-Lang-App/minigames/audiocall/play">
                 <section className='btn-play'>
                   <h5>C1</h5>
                 </section>
               </Link>
-              <Link to="/minigames/audiocall/play">
+              <Link to="/RS-Lang-App/minigames/audiocall/play">
                 <section className='btn-play'>
                   <h5>C2</h5>
                 </section>

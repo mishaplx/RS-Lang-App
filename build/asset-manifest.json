@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/RS-Lang-App/static/css/main.3a42235d.css",
-    "main.js": "/RS-Lang-App/static/js/main.b10ed459.js",
+    "main.css": "/RS-Lang-App/static/css/main.34e61792.css",
+    "main.js": "/RS-Lang-App/static/js/main.800a7f26.js",
     "static/js/787.28cb0dcd.chunk.js": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js",
     "static/media/overview.jpg": "/RS-Lang-App/static/media/overview.47948e8d45aca3a88983.jpg",
     "static/media/misha.jpg": "/RS-Lang-App/static/media/misha.320dee3a363fb9fe5ddc.jpg",
     "static/media/vitaly.jpg": "/RS-Lang-App/static/media/vitaly.20a4fa50e1eac402f188.jpg",
     "static/media/nikita.jpg": "/RS-Lang-App/static/media/nikita.30fb355f82e5c33658f8.jpg",
+    "static/media/sound.jpg": "/RS-Lang-App/static/media/sound.d9aca3bf7219117def9b.jpg",
     "static/media/book.jpg": "/RS-Lang-App/static/media/book.e7e7fe423793c4368571.jpg",
     "static/media/login.png": "/RS-Lang-App/static/media/login.bd00a6ce4f76110df38c.png",
     "static/media/logo.svg": "/RS-Lang-App/static/media/logo.ad178c0df28bc133be34b982d62f431d.svg",
-    "static/media/timer.svg": "/RS-Lang-App/static/media/timer.f4596fba4e6cbb86f17b.svg",
+    "static/media/timer.svg": "/RS-Lang-App/static/media/timer.f0ce94d4055cf1957f4d.svg",
     "static/media/game.svg": "/RS-Lang-App/static/media/game.69535dfa1ec9b277ae4e08b8679e9dae.svg",
     "static/media/menu.svg": "/RS-Lang-App/static/media/menu.b840114817445781870aac2ecfb66d49.svg",
     "static/media/stats.svg": "/RS-Lang-App/static/media/stats.d6634228015021debf6f380a10a5e5b7.svg",
@@ -18,12 +19,12 @@
     "static/media/audioSvg.svg": "/RS-Lang-App/static/media/audioSvg.12f7bb1530eb192efd137958cdea6c24.svg",
     "static/media/book.svg": "/RS-Lang-App/static/media/book.600ff157aa72b0acbb5e4cb23cd9fc6c.svg",
     "static/media/log-out-outline.svg": "/RS-Lang-App/static/media/log-out-outline.316dd325ee26da2ef13734bd761092da.svg",
-    "main.3a42235d.css.map": "/RS-Lang-App/static/css/main.3a42235d.css.map",
-    "main.b10ed459.js.map": "/RS-Lang-App/static/js/main.b10ed459.js.map",
+    "main.34e61792.css.map": "/RS-Lang-App/static/css/main.34e61792.css.map",
+    "main.800a7f26.js.map": "/RS-Lang-App/static/js/main.800a7f26.js.map",
     "787.28cb0dcd.chunk.js.map": "/RS-Lang-App/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a42235d.css",
-    "static/js/main.b10ed459.js"
+    "static/css/main.34e61792.css",
+    "static/js/main.800a7f26.js"
   ]
 }

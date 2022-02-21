@@ -1,9 +1,14 @@
 
 import './WordCard.css';
 import audioSvg from '../../../assets/audioSvg.svg'
+import {useDispatch} from 'react-redux';
+import { addHardWord } from '../../../redux/actions';
+import axios from "axios";
 
 function WordCard({el, chechLogin}) {
  const imgSrc = `https://raw.githubusercontent.com/rolling-scopes-school/react-rslang-be/main/${el.image}`
+
+const dispatch = useDispatch()
 
  function createMarkuptextExample() {
   return {
@@ -27,10 +32,21 @@ function  createMarkuptextMeaning(){
   audio3.play()
  }
  function handleClickHardWord(){
+    const apiUrl = `https://react-rs-language.herokuapp.com/user/${localStorage.getItem('usesId')}/words`
+    axios.get(apiUrl).then((resp) => {
+      const allPersons = resp.data;
+      console.log(allPersons);
+    });
    const hardword = document.querySelector('.hard-word')
    const hardwordchecked = document.querySelector('.hard-word-checked')
    hardword.classList.toggle('hide')
    hardwordchecked.classList.toggle('hide')
+   const wordEnglish = document.querySelector('.word__card-word').textContent
+   const wordTranslate = document.querySelector('.word__card-word-translate').textContent
+
+   dispatch(addHardWord(wordEnglish, wordTranslate))
+   console.log();
+
  }
   return (
     <div className="word__card">
@@ -63,7 +79,7 @@ function  createMarkuptextMeaning(){
       <p className='word__card-textExample-translate'>{el.textExampleTranslate}</p>
       {chechLogin() ? (<div>
         <button className='hard-word' onClick={handleClickHardWord}>Отметить как сложное слово</button>
-        <button className='hard-word-checked hide' onClick={handleClickHardWord}>Cлово отмеченно как сложное</button>
+        <div className='hard-word-checked hide'>Cлово отмеченно как сложное</div>
       </div>
       
       ):
