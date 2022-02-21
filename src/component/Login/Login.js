@@ -3,6 +3,19 @@ import loginImg from '../../assets/header/login.png'
 import closeButton from '../../assets/close-button.png'
 import { useState } from 'react';
 function Login() {
+  const getStatistic = async () => {
+    const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const res = await response.json()
+    localStorage.setItem('learnedWords', res.learnedWords)
+    localStorage.setItem('correctPercent', res.optional["correctPercent"])
+    window.location.reload()
+  }
   const loginUser = async user => {
     const rawResponse = await fetch('https://react-rs-language.herokuapp.com/signin', {
       method: 'POST',
@@ -18,9 +31,11 @@ function Login() {
     const uncorrectPassword = document.querySelector('.uncorrect-password')
     if (rawResponse.ok) {
       const content = await rawResponse.json();
-      localStorage.setItem(userLog.email, content.token)
-      localStorage.setItem(`UserName`, content.name)
+      localStorage.setItem('token', content.token)
+      localStorage.setItem('UserName', content.name)
+      localStorage.setItem('userId', content.userId)
       window.location.reload()
+      getStatistic()
       uncorrectLogin.style.display = 'none'
       uncorrectPassword.style.display = 'none'
       if (loginInput.classList.contains('.uncorrect') === true) {
