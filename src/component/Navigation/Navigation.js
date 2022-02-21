@@ -31,7 +31,7 @@ function Navigation() {
     <nav className="nav">
       <ul>
         <li>
-          <Link to="/" className="nav__name">
+          <Link to="/RS-Lang-App" className="nav__name">
             <span className="nav__icon" onClick={handleClick}>
               <img src={imgMenu} className="menuImg" width="20px" alt="menu" />
             </span>
