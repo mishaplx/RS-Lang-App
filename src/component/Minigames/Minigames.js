@@ -1,4 +1,4 @@
-
+import './Minigames.css'
 import { Link } from "react-router-dom";
 
 function Minigames() {
