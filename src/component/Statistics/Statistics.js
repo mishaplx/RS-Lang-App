@@ -60,7 +60,7 @@ function Statistics(props) {
           <h2>Статистика игр</h2>
           <div  className="games-statistics__container">
           <div className="games-statistics">
-            <h2>Статистика игр</h2>
+            {/* <h2>Статистика игр</h2> */}
             <div className="sprint-statisic">
               <h3>Спринт</h3>
               <p>Изучено слов : {sprintLearnedWords}</p>

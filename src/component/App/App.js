@@ -20,6 +20,7 @@ import HardWord from '../HardWord/HardWord'
 
 function App() {
   return (
+    
     <div className="app">
       <Header />
       <div className="main__flex">
