@@ -51,10 +51,12 @@ const setStatistic = async () => {
   const statistics = {
     "learnedWords": learnedWords,
     "optional": {
-      "correctPercent": correctPercent,
-      "bestSeries": bestSeries
+      "sprintLearnedWords" : learnedWords,
+      "sprintCorrectPercent": correctPercent,
+      "sprintBestSeries": bestSeries
     }
   }
+
   const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`, {
     method: 'PUT',
     headers: {
@@ -90,6 +92,7 @@ function timerEnd(){
   setCurrentQuestion(0);
   checkAnswer();
   dispatch(setRightAnswers(Math.floor((score/totalQuestionsCount)*100)));
+  setStatistic();
 }
 
 function checkAnswer(){
