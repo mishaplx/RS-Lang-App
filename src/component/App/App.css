@@ -1,0 +1,10 @@
+.app{
+  background-color: rgb(246, 251, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.main__flex{
+  display: flex;
+  min-height: calc(100vh - 100px);
+}

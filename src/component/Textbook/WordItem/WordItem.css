@@ -1,0 +1,17 @@
+.word-item{
+  border: 1px solid rgb(131, 131, 131);
+  background-color: #ffff4d;
+  width: 170px;
+  
+  height: 80px;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin: 5px;
+  display: block;
+}
+.word-item:hover{
+  box-shadow: 2px -1px 5px #8f8f8f;
+}

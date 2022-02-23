@@ -1,0 +1,54 @@
+.word__card{
+  border-radius: 20px;
+  border: 1px solid rgb(156, 156, 156);
+  padding: 30px;
+  width: 350px;
+}
+h3{
+  font-size: 25px;
+  margin: 5px 0px;
+}
+p{
+  margin: 5px 0px;
+  font-size: 20px;
+}
+.word__card-img{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.word__card-audio img{
+  cursor: pointer;
+}
+.word__card-audio-flex{
+  display: flex;
+  align-items: center;
+}
+.word__card-transcription{
+  margin-right: 10px;
+}
+audio{
+  display: none;
+}
+.hard-word{
+  padding: 5px;
+  background-color: aquamarine;
+  border-radius: 10px;
+}
+
+.hard-word:hover{
+  box-shadow: 4px 4px 6px rgb(191, 243, 226);
+}
+.info-reg{
+  font-weight: 600;
+}
+.hide{
+  opacity: 0;
+  transition: .2s;
+  visibility: hidden;
+}
+.hard-word-checked{
+  padding: 5px;
+  background-color: rgb(255, 130, 92);
+  border-radius: 10px;
+}

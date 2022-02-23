@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+.description {
+  margin: 10px 0 50px 0;
+  width: 100%;
+}
+
+.description-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.description-content-options {
+  display: grid;
+  row-gap: 40px;
+}
+
+h2 {
+  display: inline-block;
+  font-family: Neucha;
+  font-size: 44px;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .description-content h2 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 520px) {
+  .description-content h2 {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,51 @@
+.audio-call {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.audio-call__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 5px 10px;
+}
+.audio-call__content p {
+  cursor: default;
+}
+.levels-content h4 {
+  font-size: 20px;
+  margin: 20px 0 15px 0;
+}
+section h5 {
+  display: inline-flex;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 50%;
+  background-color: grey;
+  transition: 0.4s;
+}
+section.select-levels__content {
+  display: flex;
+  column-gap: 20px;
+}
+section h5:hover {
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: rgb(110, 245, 211);
+  box-shadow: 2px 2px 5px #000;
+}
+.select-level {
+  box-shadow: 2px 2px 5px #000;
+  background-color: rgb(110, 245, 211);
+}
+
+@media (max-width: 780px) {
+  section.select-levels__content {
+    row-gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

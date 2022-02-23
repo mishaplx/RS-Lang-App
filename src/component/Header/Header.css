@@ -1,0 +1,39 @@
+.header{
+  flex: 0 0 auto;
+  background-color:rgb(64, 243, 198);
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  padding:0px 5px;
+}
+.block__login{
+  display: flex;
+}
+.button__log-in{
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+ 
+}
+.button__log-out{
+  display: flex;
+  align-items: center;
+}
+.button__log-out:hover, .button__log-in:hover{
+  background-color:rgb(201, 201, 201);
+}
+.button__log-out:active, .button__log-in:active{
+  background-color:rgb(83, 138, 221);
+}
+button{
+  transition: .3s;
+  padding:5px;
+  cursor:pointer;
+  border-radius: 5px;border: 0px solid #000;
+}
+.button__log-in img{
+  margin-right: 10px;
+}
+.button__log-out img{
+  margin-right: 10px;
+}
