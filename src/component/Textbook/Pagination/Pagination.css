@@ -1,3 +1,9 @@
 .number__page{
   background-color: #6ef5d3;
 }
+.number__page:active{
+  box-shadow: 3px 1px 5px #3c4858;
+}
+.number__page:focus{
+  box-shadow: 3px 1px 5px #3c4858;
+}

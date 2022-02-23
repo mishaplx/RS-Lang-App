@@ -26,6 +26,12 @@
   border: 1px solid #000;
   cursor: pointer;
 }
+.level:focus{
+  box-shadow: 7px -1px 5px #3c4858;
+}
+.level:active{
+  box-shadow: 7px -1px 5px #3c4858;
+}
 .a1:hover,
 .a2:hover {
   background-color: rgb(110, 245, 211);

@@ -39,15 +39,21 @@ function Textbook() {
   }
 
   useEffect(()=>{
-    
+    setLoading(true)
     const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
     axios.get(apiUrl).then((resp) => {
       const allPersons = resp.data;
       setWords(allPersons);
       
     });
+    axios.get(apiUrl).then((resp) => {
+      const allPersons = resp.data;
+      let objWordCard = allPersons.filter(el => el.word === wordCard);
+      setBookState(objWordCard);
+      setLoading(false)
+    });
     console.log('render1');
- }, [page, groupe])
+ }, [page, groupe,  wordCard])
 
 //  const getWordId = async ()=>{
 //   const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
@@ -58,21 +64,9 @@ function Textbook() {
 //   });
 //  }
 
-   useEffect(() => {
-    const apiUrl = `https://react-rs-language.herokuapp.com/words?group=${groupe}&page=${page}`
-    axios.get(apiUrl).then((resp) => {
-      const allPersons = resp.data;
-      let objWordCard = allPersons.filter(el => el.word === wordCard);
-      setBookState(objWordCard);
-      
-      setLoading(false)
-    });
-   },[bookState, groupe, page, wordCard]);
-
   
   function handleClickWordItem(event) {
    // getWordId()
-    
     setLoading(true)
     const englishWord = event.currentTarget.children[0].innerHTML;
     setWordCard(englishWord);
