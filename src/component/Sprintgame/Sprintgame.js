@@ -24,7 +24,10 @@ const bestSeries = useSelector(state=>{
   return sprintReducer.bestSeries;
 })
 
-
+const correctPercent = useSelector(state=>{
+  const {sprintReducer} = state;
+  return sprintReducer.rightAnswers;
+})
  
 
 
@@ -41,8 +44,26 @@ const [loading, setLoading] = useState(false);
 const [questionsCount, setQuestionsCount] = useState(1);
 const [trueAnswer, setTrueAnser] = useState();
 const [roundStreak, setRoundStreak] = useState(0);
+const [totalQuestionsCount, setTotalQuestionsCount] = useState(0);
 
+const setStatistic = async () => {
 
+  const statistics = {
+    "learnedWords": learnedWords,
+    "optional": {
+      "correctPercent": correctPercent,
+      "bestSeries": bestSeries
+    }
+  }
+  const response = await fetch(`https://react-rs-language.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(statistics)
+  });
+}
 
 
   async function getWords(group = 1, page = 1){
@@ -66,9 +87,9 @@ function getRandomInt(min, max) {
 
 function timerEnd(){
   setShowScore(true);
-  dispatch(setRightAnswers(Math.floor((score/currentQuestion)*100)));
   setCurrentQuestion(0);
   checkAnswer();
+  dispatch(setRightAnswers(Math.floor((score/totalQuestionsCount)*100)));
 }
 
 function checkAnswer(){
@@ -77,7 +98,6 @@ function checkAnswer(){
   } 
   
   if(!trueAnswer){
-    
     if(roundStreak > bestSeries) {
       dispatch(setBestSeries(roundStreak));
     }
@@ -86,7 +106,7 @@ function checkAnswer(){
 }
 
 function currentAnswerCount() {
-  if(currentQuestion < words.length-3){
+if(currentQuestion < words.length-3 ){
     const currentAnswer = getRandomInt(currentQuestion, currentQuestion + 3);
     setCurrentAnswer(currentAnswer)
   } else {
@@ -97,7 +117,7 @@ function currentAnswerCount() {
   if(currentQuestion == words.length){
     const currentAnswer = currentQuestion;
     setCurrentAnswer(currentAnswer)
-  }
+  } 
 }
 
 
@@ -105,6 +125,7 @@ const handleAnswer = (event) => {
     const target = event.target;
     let trnslWord = document.querySelector('.translate-word').textContent;
     const nextQuestion = currentQuestion + 1;
+    setTotalQuestionsCount(totalQuestionsCount + 1);
     const id = words[currentQuestion].id;
 
     if (target.className === 'true-button' && trnslWord === words[currentQuestion].wordTranslate) {
@@ -146,7 +167,6 @@ const handleAnswer = (event) => {
     } else{
       setCurrentQuestion(0)
       getWords(group, getRandomInt(0,30))
-      console.log(score)
     }
 
     currentAnswerCount();
