@@ -17,7 +17,7 @@ useEffect(() => {
   }
   if (timeLeft === 0) {
     props.timerEnd();
-    setTimeLeft(30);
+    setTimeLeft(60);
   }
   return () => clearTimeout(timer);
 

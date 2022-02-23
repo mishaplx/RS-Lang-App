@@ -114,8 +114,9 @@ ul li {
 }
 
 .timer{
-    position: relative;
-    top: 0px;
+
+    position: absolute;
+    top: 100px;
     display: flex;
     gap: 20px;
     flex-direction: column;
@@ -125,6 +126,7 @@ ul li {
     font-size: 40px;
     text-align: center;
     margin-bottom: 50px;
+    width: 100px;
 }
 
 .timer-icon{
@@ -140,12 +142,16 @@ ul li {
     text-transform: capitalize;
 }
 .question-block{
-    min-height: 100%;
+    position: absolute;
+    min-height: 200px;
     min-width: 400px;
     text-align: center;
-
+    top: 250px;
 }
+
 .answers-block{
+    position: absolute;
+    top: 400px;
     display: flex;
     gap: 30px;
 

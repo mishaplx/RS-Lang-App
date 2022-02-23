@@ -29,6 +29,7 @@ const bestSeries = useSelector(state=>{
 
 
 const [currentQuestion, setCurrentQuestion] = useState(0);
+const [currentAnswer, setCurrentAnswer] = useState(0);
 const [showScore, setShowScore] = useState(false);
 const [score, setScore] = useState(0);
 const [isGameStart, setGameStart ] = useState(false);
@@ -44,20 +45,18 @@ const [roundStreak, setRoundStreak] = useState(0);
 
 
 
+  async function getWords(group = 1, page = 1){
 
+    setLoading(true);
 
-async function getWords(group = 1 , page = 1){
-  
-  setLoading(true);
-  try{
-    const res = await axios.get(`https://react-rs-language.herokuapp.com/words?group=${group}&page=${page}`);
-    setWords(res.data);
-  } catch(e){
-    console.log(e);
+      try{
+        const res = await axios.get(`https://react-rs-language.herokuapp.com/words?group=${group}&page=${page}`);
+        setWords(res.data)     
+      } catch(e){
+        console.log(e);
+      }
+    setLoading(false);
   }
-  setLoading(false);
-}
-
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -73,8 +72,6 @@ function timerEnd(){
 }
 
 function checkAnswer(){
- 
- 
   if(trueAnswer){
     setRoundStreak(roundStreak + 1);
   } 
@@ -88,13 +85,27 @@ function checkAnswer(){
   }
 }
 
+function currentAnswerCount() {
+  if(currentQuestion < words.length-3){
+    const currentAnswer = getRandomInt(currentQuestion, currentQuestion + 3);
+    setCurrentAnswer(currentAnswer)
+  } else {
+    const currentAnswer = currentQuestion;
+    setCurrentAnswer(currentAnswer)
+  }
+  
+  if(currentQuestion == words.length){
+    const currentAnswer = currentQuestion;
+    setCurrentAnswer(currentAnswer)
+  }
+}
+
 
 const handleAnswer = (event) => {
     const target = event.target;
     let trnslWord = document.querySelector('.translate-word').textContent;
     const nextQuestion = currentQuestion + 1;
     const id = words[currentQuestion].id;
-
 
     if (target.className === 'true-button' && trnslWord === words[currentQuestion].wordTranslate) {
         setScore(score + 1);
@@ -128,33 +139,34 @@ const handleAnswer = (event) => {
     }
    
 
-  if (nextQuestion < words.length && !showScore) {
+
+  if (nextQuestion < words.length) {
     setCurrentQuestion(nextQuestion);
     setQuestionsCount(questionsCount + 1)
+    } else{
+      setCurrentQuestion(0)
+      getWords(group, getRandomInt(0,30))
+      console.log(score)
+    }
 
-  
-    } else {
-    setShowScore(true);
-    dispatch(setRightAnswers(Math.floor((score/currentQuestion)*100)));
-    setCurrentQuestion(0);
-    checkAnswer();
-    } 
-  };
+    currentAnswerCount();
+   
+}
 
-
-  const chooseLevel = (event)=>{
-    const target = event.target;
-    const allTargets = document.querySelectorAll('.active');
+const chooseLevel = (event)=>{
+  const target = event.target;
+  const allTargets = document.querySelectorAll('.active');
 
   allTargets.forEach(el =>{
-    el.classList.remove('active')
+  el.classList.remove('active');
   })
 
   if(target.className !== 'active'){ 
-    target.classList.toggle('active')
+    target.classList.toggle('active');
     group = target.dataset.id;
   }
 }
+
 
 
 let group = 1;
@@ -163,8 +175,7 @@ function startGame(){
   setGameStart(true);
   setGameOver(false);
   setScore(0);
-  getWords(group, getRandomInt(0, 30));
-  
+  getWords(group, getRandomInt(0,30))
 }
 
 function back(){
@@ -217,14 +228,12 @@ function back(){
              
               {!showScore &&(
               <div className='game-wrapper'>
-                 
+                 <Timer isGameStart = {isGameStart} showScore = {showScore} timerEnd = {timerEnd} />
                 {loading ? <ClipLoader color={"rgb(110, 245, 211)"} loading={loading}  size={30} /> : 
-           
-                <div className='question-block'>
-                    <Timer isGameStart = {isGameStart} showScore = {showScore} timerEnd = {timerEnd} />
+                <div className='question-block'>  
                  <span className='first-word'>
-                  {words[currentQuestion].word}</span> это <span className='translate-word'>{words[getRandomInt(0, words.length)].wordTranslate}</span>?
-                
+                  {words[currentQuestion].word}</span> это <span className='translate-word'>
+                    {words[currentAnswer].wordTranslate}</span>?
                   <div className='show-answer'>
                     <span className='answer-icon'></span>
                     {roundRightAnswers.length}
