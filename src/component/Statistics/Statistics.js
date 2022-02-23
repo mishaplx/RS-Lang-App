@@ -35,6 +35,10 @@ function Statistics(props) {
     const res = await response.json()
     localStorage.setItem('learnedWords', res.learnedWords)
     localStorage.setItem('correctPercent', res.optional["correctPercent"])
+
+    localStorage.setItem('sprintLearnedWords',  res.optional["sprintLearnedWords"])
+    localStorage.setItem('sprintCorrectPercent', res.optional["sprintCorrectPercent"])
+    localStorage.setItem('sprintBestSeries', res.optional["sprintBestSeries"])
     setLoading(false)
   }
   useEffect(() => {
@@ -46,11 +50,11 @@ function Statistics(props) {
         <div className="total-statistics">
         <h2 className='today-statistic__title'> Статистика за сегодня</h2>
           <div className="words-learned">
-            <p className="words-learned-count">0</p>
+            <p className="words-learned-count">{loading ? 'загрузка...' : (Number(localStorage.getItem('learnedWords')))}</p>
             <p className="words-learned-title">Слов изучено</p>
           </div>
           <div className="right-answers">
-            <p className="right-answers-count">0%</p>
+            <p className="right-answers-count"> {loading ? 'загрузка...' : (Number(localStorage.getItem('correctPercent')) + (Number(localStorage.getItem('sprintCorrectPercent'))))/2 } % </p>
             <p className="right-answers-title">Правильных ответов</p>
           </div>
         </div>
@@ -61,9 +65,11 @@ function Statistics(props) {
           <div  className="games-statistics__container">
             <div className="sprint-statisic">
               <h3>Спринт</h3>
-              <p>Изучено слов : {localStorage.getItem('token') ? (loading ? 'загрузка...' : {sprintLearnedWords}) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
-              <p>Правильных ответов (%) : {localStorage.getItem('token') ? (loading ? 'загрузка...' : {rightAnswers}) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
-              <p>Лучшая серия : {localStorage.getItem('token') ? (loading ? 'загрузка...' : {bestSeries}) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+              <p>Изучено слов : {localStorage.getItem('token') ? (loading ? 'загрузка...' : localStorage.getItem('sprintLearnedWords')) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+              <p>Правильных ответов (%) : {localStorage.getItem('token') ? (loading ? 'загрузка...' : localStorage.getItem('sprintCorrectPercent')) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+              <p>Лучшая серия : {localStorage.getItem('token') ? (loading ? 'загрузка...' : localStorage.getItem('sprintBestSeries')) : <span id="only-auth">(Только для авторизованных пользователей)</span>}</p>
+        
+              
             </div>
 
             <div className="audio-call-statisic">
